@@ -1,0 +1,68 @@
+/*
+Theme Name: Mindu
+Theme URI: https://wordpress.org/themes/mindu/
+Author: the WordPress team
+Author URI: https://wordpress.org
+Description: Mindu is a modern, responsive theme designed for flexibility and ease of use. It offers a clean layout with intuitive navigation, making it perfect for personal blogs, business websites, and creative portfolios. The theme supports a variety of customization options, allowing users to create a unique look that matches their brand identity.
+Requires at least: 6.7
+Tested up to: 6.9
+Requires PHP: 7.2
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mindu
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
+*/
+
+
+/*===== Admin Bar hide =====*/
+.admin-bar .tp-transparent{
+    margin-top: 32px;
+}
+
+.admin-bar .header-sticky{
+    top: 32px;
+}
+
+
+/*===== Custom styles for language menu and dropdown ======*/
+.tp-lang-nav ul{
+    list-style: none;
+}
+
+.tp-lang-nav ul li{
+    position: relative;
+    margin-left: 6px;
+}
+
+.tp-lang-nav ul li .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0%; 
+    padding: 10px;
+    list-style: none;
+    min-width: 130px;  
+    background-color: var(--tp-common-white);
+    padding: 10px 32px 11px 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: max-content;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    transform: translateY(10%) scale(1);
+    z-index: 9;
+}
+
+/* Hover effect for language menu items */
+.tp-lang-nav ul li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.textwidget p {
+    color:rgba(255, 255, 255, 0.7);
+}

@@ -1,0 +1,156 @@
+
+//---------------------- Title, Sub Title, and Content (Controls Widget) --------------------------
+
+protected function register_controls(): void {
+
+    $this->start_controls_section(
+        'section_title',
+        [
+            'label' => esc_html__( 'Title (any name for section)', 'elementor-addon' ),
+            'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+        ]
+    );
+
+    $this->add_control(
+        'title',
+        [
+            'label' => esc_html__( 'Title', 'elementor-addon' ),
+            'type' => \Elementor\Controls_Manager::TEXTAREA,
+            'default' => esc_html__( 'Hello world', 'elementor-addon' ),
+        ]
+    );
+
+    $this->add_control(
+        'sub_title',
+        [
+            'label' => esc_html__( 'Sub Title', 'elementor-addon' ),
+            'type' => \Elementor\Controls_Manager::TEXT,
+            'default' => esc_html__( 'Hello world', 'elementor-addon' ),
+            'label_block' => true,
+        ]
+    );
+
+    $this->add_control(
+        'content',
+        [
+            'label' => esc_html__( 'Content', 'elementor-addon' ),
+            'type' => \Elementor\Controls_Manager::TEXTAREA,
+            'default' => esc_html__( 'Content Here', 'elementor-addon' ),
+        ]
+    );
+
+
+    $this->end_controls_section();
+
+}
+
+
+HTML Markup To Dynamic PHP Formula For Title, Sub Title, and Content (Elementor Controls Widget)
+
+    HTML Title: <h2>Learn Course Online nNew Today</h2>
+    Dynamic Title: <h2><?php echo mc_kses($settings['title']); ?></h2> (mc_kses- mindu-core-kses)
+
+    HTML Sub-Title: <span>Learn Course Online nNew Today</span>
+    Dynamic Sub-Title: <span><?php echo mc_kses($settings['sub_title']); ?></span> 
+
+    HTML Content: <p>Learn Course Online nNew Today</p>
+    Dynamic Content: <p><?php echo mc_kses($settings['content']); ?></p> 
+
+---End
+
+
+
+//---------------------- Selection Controls (Controls Widget) --------------------------
+
+protected function register_controls(): void {
+
+    $this->start_controls_section(
+
+        'section_layout',
+            [
+                'label' => esc_html__( 'Design Layout', 'elementor-addon' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+        'button_style',
+            [
+                'label' => esc_html__( 'Button Style', 'textdomain' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'solid',
+                'options' => [
+                    'solid_button' => esc_html__( 'Solid Button', 'textdomain' ),
+                    'border_button' => esc_html__( 'Border Button', 'textdomain' ),
+                ],
+            ]
+        );
+
+    $this->end_controls_section();
+
+}
+
+
+//---------------------- Button & Link (Controls Widget) --------------------------
+
+protected function register_controls(): void {
+
+    $this->start_controls_section(
+        
+        'section_button',
+            [
+                'label' => esc_html__( 'Button', 'elementor-addon' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'button_text',
+            [
+                'label' => esc_html__( 'Button Text', 'elementor-addon' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'Button Text', 'elementor-addon' ),
+            ]
+        );
+
+        $this->add_control(
+            'button_url',
+            [
+                'label' => esc_html__( 'Link', 'textdomain' ),
+                'type' => \Elementor\Controls_Manager::URL,
+                'options' => [ 'url', 'is_external', 'nofollow' ],
+                'default' => [
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
+                    // 'custom_attributes' => '',
+                ],
+                'label_block' => true,
+            ]
+        );
+
+    $this->end_controls_section();
+}
+
+
+HTML Markup To Dynamic PHP Formula For Title, Sub Title, and Content (Elementor Controls Widget) 
+
+    <div class="tp-hero-explore">
+       <a href="course.html" class="tp-btn tp-btn-square">
+            Find Courses
+        </a>
+    </div>
+
+    <div class="wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".7s">
+        <a 
+            <?php echo $this->get_render_attribute_string ('button_arg'); ?>>
+            <?php echo mc_kses($settings['button_text']); ?> 
+        </a>
+    </div>
+
+---End
+
+
+
+
+
