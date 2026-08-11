@@ -329,52 +329,7 @@ class Mindu_Hero extends \Elementor\Widget_Base {
 			<div class="container">
 				<div class="row align-items-end">
 					<div class="col-xxl-8 col-xl-7">
-						<div class="tp-hero-2-content">
-							<?php if(!empty($settings['sub_title'])) : ?>
-							<span class="tp-section-subtitle text-white d-inline-block mb-10 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".3s">
-								<span class="mr-5">
-								<svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M14.625 7.76196V10.1183C14.625 10.9741 14.1019 11.7379 13.2919 12.0954C12.3075 12.5287 10.8169 13 9 13C7.18313 13 5.6925 12.5287 4.7025 12.0954C3.89812 11.7379 3.375 10.9741 3.375 10.1183V7.76196L7.37437 9.52242C7.88625 9.74993 8.4375 9.86368 9 9.86368C9.5625 9.86368 10.1137 9.74993 10.6256 9.52242L14.625 7.76196Z" fill="currentColor" />
-									<path d="M16.8751 6.77063V10.2915C16.8751 10.5895 16.6219 10.8332 16.3126 10.8332C16.0032 10.8332 15.7501 10.5895 15.7501 10.2915V7.26898L16.8751 6.77063Z" fill="currentColor" />
-									<path d="M7.84013 8.53863C8.20856 8.70059 8.604 8.78184 9 8.78184C9.396 8.78184 9.79088 8.70113 10.1599 8.53863L17.3436 5.37631C17.7486 5.19809 18 4.82054 18 4.39099C18 3.96144 17.7486 3.58335 17.3436 3.40513L10.1599 0.24335C9.42244 -0.0811165 8.57812 -0.0811165 7.84069 0.24335L0.656438 3.40459C0.251438 3.58335 0 3.9609 0 4.39045C0 4.82 0.251438 5.19755 0.656438 5.37631L7.84013 8.53863Z" fill="currentColor" />
-								</svg>
-								</span>
-								<?php echo mc_kses($settings['sub_title']); ?>
-							</span>
-							<?php endif; ?>
-							<?php if(!empty($settings['title'])) : ?>
-							<h2 class="tp-hero-2-title fw-700 mb-40 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".4s"><?php echo mc_kses($settings['title']); ?></h2>
-							<?php endif; ?>	
-							<?php if(!empty($settings['button_text'])) : ?>
-							<div class="d-inline-flex wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".5s">
-								<a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>>
-									<?php echo mc_kses($settings['button_text']); ?>
-									<span class="ml-8">
-									<svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.70151 0.20932C5.83044 0.0752924 6.00528 0 6.18758 0C6.36989 0 6.54472 0.0752924 6.67365 0.20932L10.7987 4.49886C10.9276 4.63293 11 4.81474 11 5.00432C11 5.19389 10.9276 5.3757 10.7987 5.50977L6.67365 9.79931C6.54399 9.92954 6.37032 10.0016 6.19006 9.99997C6.00979 9.99834 5.83736 9.92316 5.70989 9.7906C5.58242 9.65805 5.51011 9.47874 5.50855 9.29129C5.50698 9.10384 5.57628 8.92325 5.70151 8.78841L8.65299 5.71924H0.687509C0.50517 5.71924 0.3303 5.64392 0.201367 5.50984C0.0724338 5.37577 0 5.19393 0 5.00432C0 4.81471 0.0724338 4.63286 0.201367 4.49879C0.3303 4.36471 0.50517 4.28939 0.687509 4.28939H8.65299L5.70151 1.22022C5.57263 1.08615 5.50022 0.904344 5.50022 0.714771C5.50022 0.525199 5.57263 0.343388 5.70151 0.20932Z" fill="currentColor" />
-									</svg>
-									</span>
-								</a>
-							</div>
-							<?php endif; ?>
-
-							<?php if(!empty($settings['button_text_2'])) : ?>
-							<div class="d-inline-flex wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s">
-								<a <?php echo $this->get_render_attribute_string( 'button_arg_2' ); ?>>
-									<?php echo mc_kses($settings['button_text_2']); ?>
-									<span class="ml-8">
-									<svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.70151 0.20932C5.83044 0.0752924 6.00528 0 6.18758 0C6.36989 0 6.54472 0.0752924 6.67365 0.20932L10.7987 4.49886C10.9276 4.63293 11 4.81474 11 5.00432C11 5.19389 10.9276 5.3757 10.7987 5.50977L6.67365 9.79931C6.54399 9.92954 6.37032 10.0016 6.19006 9.99997C6.00979 9.99834 5.83736 9.92316 5.70989 9.7906C5.58242 9.65805 5.51011 9.47874 5.50855 9.29129C5.50698 9.10384 5.57628 8.92325 5.70151 8.78841L8.65299 5.71924H0.687509C0.50517 5.71924 0.3303 5.64392 0.201367 5.50984C0.0724338 5.37577 0 5.19393 0 5.00432C0 4.81471 0.0724338 4.63286 0.201367 4.49879C0.3303 4.36471 0.50517 4.28939 0.687509 4.28939H8.65299L5.70151 1.22022C5.57263 1.08615 5.50022 0.904344 5.50022 0.714771C5.50022 0.525199 5.57263 0.343388 5.70151 0.20932Z" fill="currentColor" />
-									</svg>
-									</span>
-								</a>
-							</div>
-							<?php endif; ?>
-
-							<?php if(!empty($settings['content'])) : ?>
-							<h2 class="tp-hero-2-dec mt-180 mb-50 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".7s"><?php echo mc_kses($settings['content']); ?></h2>
-							<?php endif; ?>
-						</div>
+						
 					</div>
 					<?php if(!empty($settings['form_shortcode'])) : ?>
 					<div class="col-xxl-4 col-xl-5">
