@@ -3,6 +3,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 
 	use Common_Trait_Style;
 	use Common_Icon_Style;
+	use Button_Style_Trait;
 
 	// ====== widgets Information ======
 	public function get_name(): string {
@@ -244,6 +245,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 		$this->common_trait_style('title', 'Title', '.el-title');
 		$this->common_trait_style('content', 'Content', '.el-content');
 		$this->common_icon_style('icon', 'Icon Style', '.el-icon');
+		 $this->button_style_controls('button','Button Style','.el-tp-btn');	
 		
 	}
 
@@ -259,7 +261,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 		// This is for multiple attribute for button
 		if(!empty($settings['button_text'])){
 			$this->add_link_attributes( 'button_arg', $settings['button_url'] );
-			$this->add_render_attribute('button_arg', 'class', 'tp-service-btn fw-700 tp-ff-heading');
+			$this->add_render_attribute('button_arg', 'class', 'el-tp-btn tp-service-btn fw-700 tp-ff-heading');
 		}
 
 		?>
@@ -270,11 +272,11 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 
 				<!-- Multiple Icone print condition -->
 				<?php if($settings['icon_style'] == 'icon') :?>
-				<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+					<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 				<?php elseif($settings['icon_style'] == 'image') :?>
-				<img src="<?php echo esc_url($settings['image']['url']); ?>" alt="">
+					<img src="<?php echo esc_url($settings['image']['url']); ?>" alt="">
 				<?php else : ?>
-				<?php echo $settings['svg']; ?>
+					<?php echo $settings['svg']; ?>
 				<?php endif;?>
 
 			</span>
@@ -295,18 +297,21 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 			
 
 			<!-- Button Dynamic Widget -->
+			<!-- Button Dynamic Widget -->
 			<?php if(!empty($settings['button_text'])) : ?> 
-				<a class="jb-btn" <?php echo $this->get_render_attribute_string( 'button_url' ); ?>>
+				<a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>>
 					<?php echo esc_html( $settings['button_text'] ); ?>
 
 					<!-- Multiple Icone print condition for Button Icone -->
-					<?php if($settings['icon_type'] == 'icon') :?>
-					<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-					<?php elseif($settings['icon_type'] == 'image') :?>
-					<img src="<?php echo esc_url($settings['button_image']['url']); ?>" alt="">
-					<?php else : ?>
-					<?php echo $settings['svg_code']; ?>
-					<?php endif;?>
+					<span class="tp-btn-icon ml-8">
+						<?php if($settings['icon_type'] == 'icon') :?>
+							<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                   
+						<?php elseif($settings['icon_type'] == 'image') :?>
+							<img src="<?php echo esc_url($settings['button_image']['url']); ?>" alt="">
+						<?php else : ?>
+							<?php echo $settings['svg_code']; ?>
+						<?php endif;?>
+					</span>
 
 				</a>
 			<?php endif; ?>

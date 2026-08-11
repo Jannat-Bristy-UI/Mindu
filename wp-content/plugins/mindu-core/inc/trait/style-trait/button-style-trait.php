@@ -83,7 +83,7 @@ trait Button_Style_Trait {
             [
                 'label'   => esc_html__( 'Icon Color', 'elementor-addon' ),
                 'type'    => \Elementor\Controls_Manager::COLOR,
-                'default' => '#FFFFFF',
+                // 'default' => '#FFFFFF',
                 'selectors' => [
                     '{{WRAPPER}} ' . $selector . ' .tp-btn-icon' => 'color: {{VALUE}};',
                     '{{WRAPPER}} ' . $selector . ' .tp-btn-icon svg' => 'fill: {{VALUE}};',
@@ -226,16 +226,26 @@ trait Button_Style_Trait {
                 'label' => esc_html__( 'Icon Size', 'elementor-addon' ),
                 'type'  => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em', 'rem' ],
+
+                'default' => [
+                    'size' => 16,
+                    'unit' => 'px',
+                ],
+
+                
                 'range' => [
                     'px' => [
                         'min' => 8,
                         'max' => 100,
                     ],
                 ],
+
+
                 'selectors' => [
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon i,
-                    {{WRAPPER}} ' . $selector . ' .tp-btn-icon svg' =>
-                        'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon i' =>
+                        'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon svg' =>
+                        'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -255,7 +265,7 @@ trait Button_Style_Trait {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} ' . $selector . ' .tp-btn-icon' =>
-                        'margin-inline: {{SIZE}}{{UNIT}};',
+                        'margin-inline-start: {{SIZE}}{{UNIT}}; margin-inline-end: 0;',
                 ],
             ]
         );

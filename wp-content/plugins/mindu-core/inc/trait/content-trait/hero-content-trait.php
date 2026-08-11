@@ -150,18 +150,18 @@ trait Hero_Content_Trait {
 
         // Icon Type
         $this->add_control(
-            'icon_style',
+            'icon_type',
             [
-                'label'   => esc_html__( 'Icon Type', 'elementor-addon' ),
+                'label'   => esc_html__( 'Icon Type', 'textdomain' ),
                 'type'    => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'icon',
                 'options' => [
                     'icon' => [
-                        'title' => esc_html__( 'Icon', 'elementor-addon' ),
+                        'title' => esc_html__( 'Icon', 'textdomain' ),
                         'icon'  => 'eicon-star',
                     ],
                     'svg' => [
-                        'title' => esc_html__( 'SVG', 'elementor-addon' ),
+                        'title' => esc_html__( 'SVG', 'textdomain' ),
                         'icon'  => 'eicon-code',
                     ],
                 ],
@@ -170,29 +170,29 @@ trait Hero_Content_Trait {
         );
 
         // Elementor Icon
-        $this->add_control(
-            'icon',
-            [
-                'label'     => esc_html__( 'Choose Icon', 'elementor-addon' ),
-                'type'      => \Elementor\Controls_Manager::ICONS,
-                'default' => [
-                    'value'   => 'fas fa-arrow-left',
-                    'library' => 'fa-solid',
-                ],
-                'condition' => [
-                    'icon_style' => 'icon',
-                ],
-            ]
-        );
+       $this->add_control(
+				'button_icon',
+				[
+					'label' => esc_html__( 'Choose Icon', 'textdomain' ),
+					'type' => \Elementor\Controls_Manager::ICONS,
+					'default' => [
+                        'value' => 'fas fa-arrow-right',
+                        'library' => 'fa-solid',
+                    ],
+					'condition' => [
+						'icon_type' => 'icon',
+					],
+				]
+			);
 
         // SVG Code
         $this->add_control(
-            'svg',
+            'svg_code',
             [
                 'label'     => esc_html__( 'SVG Code', 'elementor-addon' ),
                 'type'      => \Elementor\Controls_Manager::TEXTAREA,
                 'condition' => [
-                    'icon_style' => 'svg',
+                    'icon_type' => 'svg',
                 ],
             ]
         );
