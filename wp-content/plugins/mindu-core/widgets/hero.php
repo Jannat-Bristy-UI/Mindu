@@ -134,10 +134,8 @@ class Mindu_Hero extends \Elementor\Widget_Base {
 
 
 
-
-
-                            
-                            <?php
+                            <!--Button  -->
+                          <?php
                             if ( ! empty( $settings['button_text'] ) ) {
 
                                 $this->add_link_attributes( 'button_arg', $settings['button_url'] );
@@ -145,7 +143,7 @@ class Mindu_Hero extends \Elementor\Widget_Base {
                                 $this->add_render_attribute(
                                     'button_arg',
                                     'class',
-                                    'tp-btn tp-btn-square'
+                                    'el-tp-btn tp-btn tp-btn-square'
                                 );
                             }
                             ?>
@@ -154,31 +152,28 @@ class Mindu_Hero extends \Elementor\Widget_Base {
 
                                 <a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>>
 
-                                    <?php echo esc_html( $settings['button_text'] ); ?>
-
-                                    <span class="ml-8">
-
-                                        <?php
-                                        if ( 'icon' === $settings['icon_style'] ) {
-
-                                            if ( ! empty( $settings['icon']['value'] ) ) {
-
-                                                \Elementor\Icons_Manager::render_icon(
-                                                    $settings['icon'],
-                                                    [
-                                                        'aria-hidden' => 'true',
-                                                        'class' => 'tp-btn-icon'
-                                                    ]
-                                                );
-                                            }
-
-                                        } elseif ( 'svg' === $settings['icon_style'] ) {
-
-                                            echo mc_kses( $settings['svg'] );
-                                        }
-                                        ?>
-
+                                    <span class="tp-btn-text">
+                                        <?php echo esc_html( $settings['button_text'] ); ?>
                                     </span>
+
+                                    <?php if ( 'icon' === $settings['icon_style'] && ! empty( $settings['icon']['value'] ) ) : ?>
+
+                                        <span class="tp-btn-icon">
+                                            <?php
+                                            \Elementor\Icons_Manager::render_icon(
+                                                $settings['icon'],
+                                                [ 'aria-hidden' => 'true' ]
+                                            );
+                                            ?>
+                                        </span>
+
+                                    <?php elseif ( 'svg' === $settings['icon_style'] && ! empty( $settings['svg'] ) ) : ?>
+
+                                        <span class="tp-btn-icon">
+                                            <?php echo mc_kses( $settings['svg'] ); ?>
+                                        </span>
+
+                                    <?php endif; ?>
 
                                 </a>
 

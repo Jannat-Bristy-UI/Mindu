@@ -4,7 +4,7 @@
 /*  2.5 Buttons
 /*----------------------------------------*/
 
-.#{$theme-prifix}-btn {
+.#{$theme-prifix}-btn{
     border-radius: 50px;
     padding: 6px 32px 8px 32px;
     background: var(--tp-theme-1);
@@ -15,87 +15,48 @@
     color: var(--tp-common-white);
     display: inline-flex;
     align-items: center;
-
-    &:hover {
+    &:hover{
         background: var(--tp-common-red);
         color: var(--tp-common-white);
     }
-
-    & .ml-8 {
+    & .ml-8{
         margin-left: 8px;
     }
-
-    /* ===== Icon Fix ===== */
-    & .tp-btn-icon-before,
-    & .tp-btn-icon-after {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        flex-shrink: 0;
-        color: inherit;
-    }
-
-    & .tp-btn-icon-before svg,
-    & .tp-btn-icon-after svg {
-        width: 16px;
-        height: 16px;
-        display: block;
-        fill: currentColor;
-        stroke: currentColor;
-    }
-
-    & .tp-btn-icon-before svg path,
-    & .tp-btn-icon-after svg path {
-        fill: currentColor;
-    }
-
-    /* ===== End Icon Fix ===== */
-
-    &-square {
+    &-square{
         border-radius: 12px;
         padding: 14px 32px;
     }
-
-    &-xl {
+    &-xl{
         padding: 11px 24px 13px 24px;
     }
-
-    &-xxl {
+    &-xxl{
         padding: 11px 31px 13px 31px;
     }
-
-    &-border {
+    &-border{
         border: 1px solid rgba(31, 36, 46, 0.2);
         background: transparent;
         color: var(--tp-common-black);
-
-        &:hover {
+        &:hover{
             border-color: var(--tp-theme-1);
         }
     }
-
-    &-transparent {
+    &-transparent{
         background: transparent;
         padding: 0;
-
-        &:hover {
+        &:hover{
             color: var(--tp-theme-1);
             background: transparent;
         }
     }
-
-    &-white {
+    &-white{
         background: var(--tp-common-white);
         color: var(--tp-common-black);
     }
-
-    &-black {
+    &-black{
         background: var(--tp-common-black);
         color: var(--tp-common-white);
     }
-
-    &-grey {
+    &-grey{
         background: #faf8f1;
         color: var(--tp-common-black);
     }

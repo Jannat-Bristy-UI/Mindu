@@ -8,7 +8,7 @@ trait Button_Style_Trait {
 
     public function button_style_controls( $id, $label = 'Button', $selector = '' ) {
 
-        // Style Section Name
+        // Style Section
         $this->start_controls_section(
             $id . '_section_style',
             [
@@ -17,7 +17,7 @@ trait Button_Style_Trait {
             ]
         );
 
-        // Position
+        // Alignment
         $this->add_control(
             $id . '_align',
             [
@@ -54,10 +54,10 @@ trait Button_Style_Trait {
             ]
         );
 
-        // Tabs Start
+        // Tabs
         $this->start_controls_tabs( $id . '_style_tabs' );
 
-        // ================= NORMAL TAB =================
+        // Normal Tab
         $this->start_controls_tab(
             $id . '_normal_tab',
             [
@@ -77,6 +77,7 @@ trait Button_Style_Trait {
             ]
         );
 
+        // Icon Color
         $this->add_control(
             $id . '_icon_color',
             [
@@ -84,25 +85,12 @@ trait Button_Style_Trait {
                 'type'    => \Elementor\Controls_Manager::COLOR,
                 'default' => '#FFFFFF',
                 'selectors' => [
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-before' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-after'  => 'color: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-before svg' =>
-                        'fill: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-after svg' =>
-                        'fill: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-before svg path' =>
-                        'fill: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-after svg path' =>
-                        'fill: {{VALUE}};',
+                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon svg path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
-
-        
 
         // Background Color
         $this->add_control(
@@ -118,7 +106,7 @@ trait Button_Style_Trait {
 
         $this->end_controls_tab();
 
-        // ================= HOVER TAB =================
+        // Hover Tab
         $this->start_controls_tab(
             $id . '_hover_tab',
             [
@@ -145,23 +133,9 @@ trait Button_Style_Trait {
                 'label' => esc_html__( 'Icon Color', 'elementor-addon' ),
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon-before' =>
-                        'color: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon-after' =>
-                        'color: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon-before svg' =>
-                        'fill: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon-after svg' =>
-                        'fill: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon-before svg path' =>
-                        'fill: {{VALUE}};',
-
-                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon-after svg path' =>
-                        'fill: {{VALUE}};',
+                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon svg path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -245,8 +219,6 @@ trait Button_Style_Trait {
             ]
         );
 
-
-
         // Icon Size
         $this->add_responsive_control(
             $id . '_icon_size',
@@ -261,10 +233,8 @@ trait Button_Style_Trait {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-before i,
-                    {{WRAPPER}} ' . $selector . ' .tp-btn-icon-after i,
-                    {{WRAPPER}} ' . $selector . ' .tp-btn-icon-before svg,
-                    {{WRAPPER}} ' . $selector . ' .tp-btn-icon-after svg' =>
+                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon i,
+                    {{WRAPPER}} ' . $selector . ' .tp-btn-icon svg' =>
                         'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
@@ -284,10 +254,8 @@ trait Button_Style_Trait {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-before' =>
-                        'margin-right: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon-after' =>
-                        'margin-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} ' . $selector . ' .tp-btn-icon' =>
+                        'margin-inline: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
