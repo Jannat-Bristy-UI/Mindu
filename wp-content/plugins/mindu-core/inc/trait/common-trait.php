@@ -31,33 +31,7 @@ trait Common_Trait_Style{
 			]
 		);
 
-        // Alignment
-        $this->add_control(
-            $id .'text_align',
-            [
-                'label' => esc_html__( 'Alignment', 'textdomain' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => esc_html__( 'Left', 'textdomain' ),
-                        'icon' => 'eicon-text-align-left',
-                    ],
-                    'center' => [
-                        'title' => esc_html__( 'Center', 'textdomain' ),
-                        'icon' => 'eicon-text-align-center',
-                    ],
-                    'right' => [
-                        'title' => esc_html__( 'Right', 'textdomain' ),
-                        'icon' => 'eicon-text-align-right',
-                    ],
-                ],
-                'default' => 'center',
-                'toggle' => true,
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector => 'text-align: {{VALUE}};',
-                ],
-            ]
-        );
+
 
         // Margin
 		$this->add_control(

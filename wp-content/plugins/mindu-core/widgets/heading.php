@@ -63,6 +63,44 @@ class Mindu_Heading extends \Elementor\Widget_Base {
 				]
 			);
 
+			// Content
+            $this->add_control(
+                'content',
+                [
+                    'label'   => esc_html__( 'Content', 'elementor-addon' ),
+                    'type'    => \Elementor\Controls_Manager::TEXTAREA,
+                    'default' => 'Hero content here',
+                ]
+            );
+
+			
+			$this->add_responsive_control(
+				'text_align',
+				[
+					'label' => esc_html__( 'Alignment', 'elementor-addon' ),
+					'type' => \Elementor\Controls_Manager::CHOOSE,
+					'options' => [
+						'left' => [
+							'title' => esc_html__( 'Left', 'elementor-addon' ),
+							'icon'  => 'eicon-text-align-left',
+						],
+						'center' => [
+							'title' => esc_html__( 'Center', 'elementor-addon' ),
+							'icon'  => 'eicon-text-align-center',
+						],
+						'right' => [
+							'title' => esc_html__( 'Right', 'elementor-addon' ),
+							'icon'  => 'eicon-text-align-right',
+						],
+					],
+					'default' => 'center',
+					'toggle'  => true,
+					'selectors' => [
+						'{{WRAPPER}} .tp-section-title-wrap' => 'text-align: {{VALUE}};',
+					],
+				]
+			);
+
 			
 
 			$this->end_controls_section();
@@ -76,6 +114,7 @@ class Mindu_Heading extends \Elementor\Widget_Base {
 	protected function register_style_section(){
 		$this->common_trait_style('sub_title', 'Sub-Title', '.el-sub-title');
 		$this->common_trait_style('title', 'Title', '.el-title');
+		$this->common_trait_style('content', 'Content', '.el-content');
 		
 	}
 
@@ -109,6 +148,13 @@ class Mindu_Heading extends \Elementor\Widget_Base {
                 <h2 class="tp-section-title wow fadeInUp el-title" data-wow-duration=".9s" data-wow-delay=".4s">
                     <?php echo mc_kses($settings['title']); ?>                    
                 </h2>
+            <?php endif; ?>
+
+			<!-- Title Dynamic in elementor By custom widgets -->
+            <?php if(!empty($settings['content'])) : ?>
+                <p class="tp-section-dec fw-500 mb-30 wow fadeInUp el-content " data-wow-duration=".9s" data-wow-delay=".4s">
+                    <?php echo mc_kses($settings['content']); ?>                    
+                </p>
             <?php endif; ?>
         </div>
 

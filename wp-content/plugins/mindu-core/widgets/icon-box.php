@@ -4,6 +4,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 	use Common_Trait_Style;
 	use Common_Icon_Style;
 	use Button_Style_Trait;
+	use Icon_Style_Trait;
 
 	// ====== widgets Information ======
 	public function get_name(): string {
@@ -138,6 +139,35 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 				]
 			);
 
+			
+			// Alignment
+			$this->add_responsive_control(
+				'text_align',
+				[
+					'label' => esc_html__( 'Alignment', 'elementor-addon' ),
+					'type' => \Elementor\Controls_Manager::CHOOSE,
+					'options' => [
+						'left' => [
+							'title' => esc_html__( 'Left', 'elementor-addon' ),
+							'icon'  => 'eicon-text-align-left',
+						],
+						'center' => [
+							'title' => esc_html__( 'Center', 'elementor-addon' ),
+							'icon'  => 'eicon-text-align-center',
+						],
+						'right' => [
+							'title' => esc_html__( 'Right', 'elementor-addon' ),
+							'icon'  => 'eicon-text-align-right',
+						],
+					],
+					'default' => 'center',
+					'toggle'  => true,
+					'selectors' => [
+						'{{WRAPPER}} .tp-service-item' => 'text-align: {{VALUE}};',
+					],
+				]
+			);
+
 			$this->end_controls_section();
 		//============ Widget End ==========
 
@@ -182,7 +212,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 				[
 					'label' => esc_html__( 'Icon Type', 'textdomain' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
-					'default' => 'icon',
+					'default' => 'svg',
 					'options' => [
 						'icon' => esc_html__( 'Icon', 'textdomain' ),
 						'svg' => esc_html__( 'SVG', 'textdomain' ),
@@ -212,7 +242,10 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 				[
 					'label' => esc_html__( 'SVG Icon Code', 'elementor-addon' ),
 					'type' => \Elementor\Controls_Manager::TEXTAREA,
-					'default' => esc_html__( '#', 'elementor-addon' ),
+					 'default' => '<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.71527 1L13 5.28471L8.71527 9.56941" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M1 5.28473H12.88" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>',
 
 					'condition' => [
 						'icon_type' => 'svg',
@@ -244,7 +277,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 	protected function register_style_section(){
 		$this->common_trait_style('title', 'Title', '.el-title');
 		$this->common_trait_style('content', 'Content', '.el-content');
-		$this->common_icon_style('icon', 'Icon Style', '.el-icon');
+		$this->icon_style_controls( 'icon', 'Icon Style', '.el-icon' );
 		 $this->button_style_controls('button','Button Style','.el-tp-btn');	
 		
 	}

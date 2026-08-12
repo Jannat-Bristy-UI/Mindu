@@ -19,7 +19,7 @@ trait Icon_Style_Trait {
             ]
         );
 
-        // Icon Size
+       // Icon Size
         $this->add_responsive_control(
             $id . '_icon_size',
             [
@@ -33,7 +33,7 @@ trait Icon_Style_Trait {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ' . $selector => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} ' . $selector . ' i'   => 'font-size: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}} ' . $selector . ' svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
@@ -143,42 +143,6 @@ trait Icon_Style_Trait {
             ]
         );
 
-        // Background Width
-        $this->add_responsive_control(
-            $id . '_icon_width',
-            [
-                'label' => esc_html__( 'Width', 'elementor-addon' ),
-                'type'  => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector => '
-                        width: {{SIZE}}{{UNIT}};
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                    ',
-                ],
-            ]
-        );
-
-        // Background Height
-        $this->add_responsive_control(
-            $id . '_icon_height',
-            [
-                'label' => esc_html__( 'Height', 'elementor-addon' ),
-                'type'  => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector => '
-                        height: {{SIZE}}{{UNIT}};
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                    ',
-                ],
-            ]
-        );
-
         // Background Border Radius
         $this->add_responsive_control(
             $id . '_icon_radius',
@@ -207,75 +171,7 @@ trait Icon_Style_Trait {
         );
 
 
-        // Position
-        $this->add_responsive_control(
-            $id . '_icon_position',
-            [
-                'label'   => esc_html__( 'Position', 'elementor-addon' ),
-                'type'    => \Elementor\Controls_Manager::SELECT,
-                'default' => '',
-                'options' => [
-                    ''         => esc_html__( 'Default', 'elementor-addon' ),
-                    'relative' => esc_html__( 'Relative', 'elementor-addon' ),
-                    'absolute' => esc_html__( 'Absolute', 'elementor-addon' ),
-                    'fixed'    => esc_html__( 'Fixed', 'elementor-addon' ),
-                    'sticky'   => esc_html__( 'Sticky', 'elementor-addon' ),
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector => 'position: {{VALUE}};',
-                ],
-            ]
-        );
 
-        // Horizontal Offset
-        $this->add_responsive_control(
-            $id . '_icon_horizontal_offset',
-            [
-                'label'      => esc_html__( 'Horizontal Offset', 'elementor-addon' ),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%', 'em', 'rem' ],
-                'condition'  => [
-                    $id . '_icon_position!' => '',
-                ],
-                'selectors'  => [
-                    '{{WRAPPER}} ' . $selector => 'left: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        // Vertical Offset
-        $this->add_responsive_control(
-            $id . '_icon_vertical_offset',
-            [
-                'label'      => esc_html__( 'Vertical Offset', 'elementor-addon' ),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%', 'em', 'rem' ],
-                'condition'  => [
-                    $id . '_icon_position!' => '',
-                ],
-                'selectors'  => [
-                    '{{WRAPPER}} ' . $selector => 'top: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        // Z-Index
-        $this->add_control(
-            $id . '_icon_z_index',
-            [
-                'label' => esc_html__( 'Z-Index', 'elementor-addon' ),
-                'type'  => \Elementor\Controls_Manager::NUMBER,
-                'min'   => -100,
-                'max'   => 9999,
-                'step'  => 1,
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector => 'z-index: {{VALUE}};',
-                ],
-                'condition' => [
-                    $id . '_icon_position!' => '',
-                ],
-            ]
-        );
         
         $this->end_controls_section();
     }

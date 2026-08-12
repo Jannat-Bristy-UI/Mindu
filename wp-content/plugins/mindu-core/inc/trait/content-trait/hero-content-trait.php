@@ -154,7 +154,7 @@ trait Hero_Content_Trait {
             [
                 'label'   => esc_html__( 'Icon Type', 'textdomain' ),
                 'type'    => \Elementor\Controls_Manager::CHOOSE,
-                'default' => 'icon',
+                'default' => 'svg',
                 'options' => [
                     'icon' => [
                         'title' => esc_html__( 'Icon', 'textdomain' ),
@@ -191,6 +191,10 @@ trait Hero_Content_Trait {
             [
                 'label'     => esc_html__( 'SVG Code', 'elementor-addon' ),
                 'type'      => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => '<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.71527 1L13 5.28471L8.71527 9.56941" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M1 5.28473H12.88" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>',
                 'condition' => [
                     'icon_type' => 'svg',
                 ],
