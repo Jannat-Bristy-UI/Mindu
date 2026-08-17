@@ -8,7 +8,7 @@ class Mindu_Video extends \Elementor\Widget_Base {
 	}
 
 	public function get_title(): string {
-		return esc_html__( 'Video', 'elementor-addon' );
+		return esc_html__( 'Theme Video', 'elementor-addon' );
 	}
 
 	public function get_icon(): string {
@@ -20,7 +20,7 @@ class Mindu_Video extends \Elementor\Widget_Base {
 	}
 
 	public function get_keywords(): array {
-		return [ 'video' ];
+		return [ 'video', 'theme video' ];
 	}
 
 	protected function register_controls(): void {
@@ -45,7 +45,7 @@ class Mindu_Video extends \Elementor\Widget_Base {
 			[
 				'label' => esc_html__( 'Video URL', 'elementor-addon' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( '#', 'elementor-addon' ),
+				'default' => esc_html__( 'https://www.youtube.com/watch?v=5UY8Ne9IpaM', 'elementor-addon' ),
 				'label_block' => true,
 			]
 		);
@@ -63,7 +63,7 @@ class Mindu_Video extends \Elementor\Widget_Base {
 		$this->add_control(
 			'image',
 			[
-				'label' => esc_html__( 'Choose Image', 'textdomain' ),
+				'label' => esc_html__( 'Choose Image', 'elementor-addon' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
 				'default' => [
 					'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -78,7 +78,7 @@ class Mindu_Video extends \Elementor\Widget_Base {
 	// style tab 
 	protected function register_style_section(){
 		
-		$this->common_trait_style('subtitle','Sub Title','.el-sub-title');
+		// $this->common_trait_style('subtitle','Sub Title','.el-sub-title');
 
 	}
 
@@ -108,5 +108,5 @@ class Mindu_Video extends \Elementor\Widget_Base {
 	}
 }
 
-
+/** @var \Elementor\Widgets_Manager $widgets_manager */
 $widgets_manager->register( new Mindu_Video() );
