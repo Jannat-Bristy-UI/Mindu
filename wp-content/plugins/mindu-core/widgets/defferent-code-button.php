@@ -1,7 +1,7 @@
 <?php 
  
  
-class Mindu_Button extends \Elementor\Widget_Base { 
+class Mindu_Button_D extends \Elementor\Widget_Base { 
  
 	use Button_Style_Trait; 
  
@@ -235,80 +235,159 @@ class Mindu_Button extends \Elementor\Widget_Base {
 
 	//============================================ HTML Render Part ===========================================
  
-	protected function render(): void {
+	protected function render(): void { 
+ 
+		$settings = $this->get_settings_for_display(); 
+ 
+ 
+		?> 
 
-		$settings = $this->get_settings_for_display();
-
-		// =====================================
-		// Button Style & Swithing Function
-		// =====================================
-		switch ( $settings['design_layout'] ) {
-
-			// Login Button
-			case 'style_2':
-				$button_class = 'tp-btn el-tp-btn';
-			break;
-
-			// Border Button
-			case 'style_3':	
-				$button_class = 'tp-btn tp-btn-border tp-btn-xl mr-10 el-tp-btn';
-			break;
-			
-			// Text Button
-			case 'style_4':	
-				$button_class = 'tp-btn tp-btn-transparent el-tp-btn';
-			break;
-
-			// Primary Button (Default)
-			case 'style_1':
-			default:	
-				$button_class = 'tp-btn tp-btn-xl mr-10 el-tp-btn';
-			break;
-
-		}
-
-
-		// ==========================
-		// Button Attributes
-		// ==========================
-		if ( ! empty( $settings['button_text'] ) ) {
-			$this->add_link_attributes( 'button_arg', $settings['button_url'] );
-			$this->add_render_attribute( 'button_arg', 'class', $button_class );
-		}
-
-		?>
-
-
-		<!--=======================================
-			Button, Link & Icon  Dynamin Function
-		========================================-->
 		
-		<?php if ( ! empty( $settings['button_text'] ) ) : ?>
+		<?php if ($settings['design_layout'] == 'style_2') : ?> 
 
-			<a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>>
 
-				<?php echo mc_kses( $settings['button_text'] ); ?>
+			<!--========================== 
+			Style-02 (Login Button) 
+			===========================-->
+			<?php
+				if(!empty($settings['button_text'])){ 
+					$this->add_link_attributes( 'button_arg_2', $settings['button_url'] ); 
+					$this->add_render_attribute('button_arg_2', 'class', ' tp-btn el-tp-btn'); 
+				} 
+			?> 
+		
+			<?php if ( ! empty( $settings['button_text'] ) ) : ?> 
+				<div class="wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s"> 
+					<a <?php echo $this->get_render_attribute_string( 'button_arg_2' ); ?>> 
+	
+						<?php echo mc_kses($settings['button_text']); ?> 
+	
+						<span class="ml-8 tp-btn-icon"> 
+							<?php if($settings['icon_type'] == 'icon') :?> 
+								<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                     
+							<?php else : ?>   
+								<?php echo mc_kses($settings['svg']); ?>   
+							<?php endif;?>  
+						</span> 
+					</a> 	
+				</div> 
+			<?php endif; ?> 
 
-				<!-- Multipule Icon Print -->
-				<span class="ml-8 tp-btn-icon">
-					<?php if ( $settings['icon_type'] == 'icon' ) : ?>
-						<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-					<?php else : ?>
-						<?php echo mc_kses( $settings['svg'] ); ?>
-					<?php endif; ?>
-				</span>
 
-			</a>
+
+		<?php elseif ($settings['design_layout'] == 'style_3') : ?>
+
+			<!--========================== 
+			Style-03 (Border Button) 
+			===========================-->
+
+			<?php
+
+				if(!empty($settings['button_text'])){ 
+					$this->add_link_attributes( 'button_arg_3', $settings['button_url'] ); 
+					$this->add_render_attribute('button_arg_3', 'class', ' tp-btn tp-btn-border tp-btn-xl mr-10  el-tp-btn'); 
+				} 
+
+			?> 
+		
+
+			<?php if ( ! empty( $settings['button_text'] ) ) : ?> 
+				<div class="wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s"> 
+					<a <?php echo $this->get_render_attribute_string( 'button_arg_3' ); ?>> 
+	
+						<?php echo mc_kses($settings['button_text']); ?> 
+	
+						<span class="ml-8 tp-btn-icon"> 
+							<?php if($settings['icon_type'] == 'icon') :?> 
+								<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                     
+							<?php else : ?>   
+								<?php echo mc_kses($settings['svg']); ?>   
+							<?php endif;?>  
+						</span> 
+					</a> 	
+				</div> 
+			<?php endif; ?> 
+
+
+
+		<?php elseif ($settings['design_layout'] == 'style_4') : ?>
+
+			<!--========================== 
+			Style-04 (Text Button) 
+			===========================-->
+
+			<?php
+
+				if(!empty($settings['button_text'])){ 
+					$this->add_link_attributes( 'button_arg_4', $settings['button_url'] ); 
+					$this->add_render_attribute('button_arg_4', 'class', ' tp-btn tp-btn-transparent  el-tp-btn'); 
+				} 
+
+			?> 
+		
+
+			<?php if ( ! empty( $settings['button_text'] ) ) : ?> 
+				<div class="wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s"> 
+					<a <?php echo $this->get_render_attribute_string( 'button_arg_4' ); ?>> 
+	
+						<?php echo mc_kses($settings['button_text']); ?> 
+	
+						<span class="ml-8 tp-btn-icon"> 
+							<?php if($settings['icon_type'] == 'icon') :?> 
+								<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                     
+							<?php else : ?>   
+								<?php echo mc_kses($settings['svg']); ?>   
+							<?php endif;?>  
+						</span> 
+					</a> 	
+				</div> 
+			<?php endif; ?> 
+
+		<?php else : ?>
+	
+			<!-- Button Style -01 (Primary Button) --> 
+			<?php
+				if(!empty($settings['button_text'])){ 
+					$this->add_link_attributes( 'button_arg', $settings['button_url'] ); 
+					$this->add_render_attribute('button_arg', 'class', ' tp-btn tp-btn-xl  mr-10 el-tp-btn'); 
+				}
+	
+			?> 
+
+			<?php if ( ! empty( $settings['button_text'] ) ) : ?> 
+				<a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>> 
+					<?php echo mc_kses($settings['button_text']); ?> 
+					<span class="ml-8">
+						<span class="ml-8 tp-btn-icon"> 
+							<?php if($settings['icon_type'] == 'icon') :?> 
+								<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                     
+							<?php else : ?>   
+								<?php echo mc_kses($settings['svg']); ?>   
+							<?php endif;?>  
+						</span>
+					</span>
+				</a>
+			<?php endif; ?>
 
 		<?php endif; ?>
 
 
-		<?php
-	} 
+
+		
+
+
+		
+		 
+		 
+		 
+		<?php 
+	}
+
+
 }
 
 /** @var \Elementor\Widgets_Manager $widgets_manager */
-$widgets_manager->register( new Mindu_Button() );
+$widgets_manager->register( new Mindu_Button_D() );
 
 
 
