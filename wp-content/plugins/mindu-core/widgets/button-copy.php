@@ -162,14 +162,6 @@ $widgets_manager->register( new Mindu_Button() );
 
 
 
-
-
-
-
-
-
-
-
 	protected function render(): void {
 
 		$settings = $this->get_settings_for_display();

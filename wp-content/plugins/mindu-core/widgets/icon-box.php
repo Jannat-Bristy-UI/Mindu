@@ -278,7 +278,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 		$this->common_trait_style('title', 'Title', '.el-title');
 		$this->common_trait_style('content', 'Content', '.el-content');
 		$this->icon_style_controls( 'icon', 'Icon Style', '.el-icon' );
-		 $this->button_style_controls('button','Button Style','.el-tp-btn');	
+		$this->button_style_controls('button','Button Style','.el-tp-btn');	
 		
 	}
 
@@ -309,7 +309,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 				<?php elseif($settings['icon_style'] == 'image') :?>
 					<img src="<?php echo esc_url($settings['image']['url']); ?>" alt="">
 				<?php else : ?>
-					<?php echo $settings['svg']; ?>
+					<?php echo mc_kses( $settings['svg'] ?? '' ); ?>
 				<?php endif;?>
 
 			</span>
@@ -336,7 +336,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 					<?php echo esc_html( $settings['button_text'] ); ?>
 
 					<!-- Multiple Icone print condition for Button Icone -->
-					<span class="tp-btn-icon ml-8">
+					<span class="tp-btn-icon ml-8 el-icon">
 						<?php if($settings['icon_type'] == 'icon') :?>
 							<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                   
 						<?php elseif($settings['icon_type'] == 'image') :?>

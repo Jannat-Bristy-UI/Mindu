@@ -19,6 +19,23 @@ trait Icon_Style_Trait {
             ]
         );
 
+        // ==========================================
+        // Icon Display
+        // ==========================================
+
+        $this->add_control(
+            $id . '_icon_display',
+            [
+                'type' => \Elementor\Controls_Manager::HIDDEN,
+                'default' => 'inline-flex',
+                'selectors' => [
+                    '{{WRAPPER}} ' . $selector => 'display: inline-flex; align-items: center; justify-content: center;',
+                ],
+            ]
+        );
+
+        
+
        // Icon Size
         $this->add_responsive_control(
             $id . '_icon_size',
@@ -35,6 +52,7 @@ trait Icon_Style_Trait {
                 'selectors' => [
                     '{{WRAPPER}} ' . $selector . ' i'   => 'font-size: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}} ' . $selector . ' svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} ' . $selector . ' img' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
                 ],
             ]
         );

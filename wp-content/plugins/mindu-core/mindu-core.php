@@ -51,7 +51,7 @@ function register_hello_world_widget( $widgets_manager ) {
 	
 	$widgets_manager->register( new \Mindu_Heading() );
 	$widgets_manager->register( new \Mindu_Icon_Box() );
-	$widgets_manager->register( new \Mindu_Button() );
+	
 	$widgets_manager->register( new \Mindu_Team() );
 	$widgets_manager->register( new \Mindu_Testimonial());
 	

@@ -3,56 +3,63 @@
   1.1 Common Classes
 ---------------------------------*/
 
-.w-img{
-	& img{
-		width: 100%;
-	}
+.w-img {
+  & img {
+    width: 100%;
+  }
 }
 
-.m-img{
-	& img{
-		max-width: 100%;
-	}
+.m-img {
+  & img {
+    max-width: 100%;
+  }
 }
 
 .fix {
-  overflow:hidden
+  overflow: hidden
 }
-.clear{
+
+.clear {
   clear: both;
 }
 
-.overflow-y-visible{
-	overflow-x: hidden;
-	overflow-y: visible;
-}
-.tp-fix{
-	overflow-x: hidden;
+.overflow-y-visible {
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
-.p-relative{
-	position: relative;
-}
-.p-absolute{
-	position: absolute;
-}
-.p-inherit{
-	position: inherit!important;
+.tp-fix {
+  overflow-x: hidden;
 }
 
-.common-underline{
-	@include bgborder(currentColor, 0,0);
-	@include transition(all .4s ease);
-	&:hover{
-		@include bgborder(currentColor, 0,100%);
-		@include transition(all .4s ease);
-	}
+.p-relative {
+  position: relative;
 }
+
+.p-absolute {
+  position: absolute;
+}
+
+.p-inherit {
+  position: inherit !important;
+}
+
+.common-underline {
+  @include bgborder(currentColor, 0, 0);
+  @include transition(all .4s ease);
+
+  &:hover {
+    @include bgborder(currentColor, 0, 100%);
+    @include transition(all .4s ease);
+  }
+}
+
 .bg-position {
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 .tp-transparent {
   position: absolute;
   top: 0;
@@ -61,17 +68,21 @@
   width: 100%;
   z-index: 3;
 }
+
 .slide-transtion {
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
 }
 
 // custom-container-here
-$container:(1800,1324);
+$container: (
+  1800,
+  1324
+);
 
-@each $number in $container{
+@each $number in $container {
   @media (min-width:1400px) {
-    .container-#{$number}{
+    .container-#{$number} {
       max-width: #{$number}px;
     }
   }
@@ -79,7 +90,7 @@ $container:(1800,1324);
 
 // tp-font-famely-variables
 @each $font, $famely in $font-family {
-  @each $key, $value in $famely{
+  @each $key, $value in $famely {
     .tp-#{$font}-#{$key} {
       font-family: var(--tp-#{$font}-#{$key});
     }
@@ -88,10 +99,15 @@ $container:(1800,1324);
 
 /* Font weight */
 $font-weight: 100;
+
 @while $font-weight < 1000 {
   .fw-#{$font-weight} {
     font-weight: (#{$font-weight});
   }
+
   $font-weight: $font-weight + 100;
 }
 
+.el-icon {
+  vertical-align: middle;
+}

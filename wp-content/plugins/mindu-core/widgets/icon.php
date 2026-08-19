@@ -2,7 +2,7 @@
 
 class Mindu_Icon extends \Elementor\Widget_Base {
 
-	use Button_Style_Trait;
+   	use Icon_Style_Trait;
 
 	//======== Widgets Information ======
 
@@ -15,7 +15,7 @@ class Mindu_Icon extends \Elementor\Widget_Base {
 	}
 
 	public function get_icon(): string {
-		return 'eicon-button';
+		return 'eicon-star';
 	}
 
 	public function get_categories(): array {
@@ -23,7 +23,7 @@ class Mindu_Icon extends \Elementor\Widget_Base {
 	}
 
 	public function get_keywords(): array {
-		return [ 'icon', 'icon box', 'icon text' ];
+		return [ 'icon', 'svg', 'image' ];
 	}
 
 
@@ -41,188 +41,101 @@ class Mindu_Icon extends \Elementor\Widget_Base {
 	// Content Tab
 	//=========================================================
 
-	protected function register_controls_section() {
+	protected function register_controls_section(){
 
-		//=====================================================
-		// Icon Layout
-		//=====================================================
+		//=========== Icon Control Widget ==========
+			$this->start_controls_section(
+				'section_icon',
+				[
+					'label' => esc_html__( 'Icon', 'elementor-addon' ),
+					'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				]
+			);
 
-		$this->start_controls_section(
-			'section_icon_layout',
-			[
-				'label' => esc_html__( 'Icon Layout', 'elementor-addon' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_control(
-			'icon_layout',
-			[
-				'label'   => esc_html__( 'Layout', 'elementor-addon' ),
-				'type'    => \Elementor\Controls_Manager::SELECT,
-				'default' => 'icon',
-				'options' => [
-					'icon'      => esc_html__( 'Icon', 'elementor-addon' ),
-					'icon_text' => esc_html__( 'Icon With Text', 'elementor-addon' ),
-				],
-			]
-		);
-
-		$this->add_control(
-			'layout_separator',
-			[
-				'type' => \Elementor\Controls_Manager::DIVIDER,
-			]
-		);
-
-		$this->end_controls_section();
-
-
-		//=====================================================
-		// Icon
-		//=====================================================
-
-		$this->start_controls_section(
-			'section_icon',
-			[
-				'label' => esc_html__( 'Icon', 'elementor-addon' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-
-		// Icon Type
-		$this->add_control(
+			$this->add_control(
 			'icon_style',
-			[
-				'label'   => esc_html__( 'Icon Type', 'elementor-addon' ),
-				'type'    => \Elementor\Controls_Manager::SELECT,
-				'default' => 'icon',
-				'options' => [
-					'icon'  => esc_html__( 'Icon', 'elementor-addon' ),
-					'svg'   => esc_html__( 'SVG', 'elementor-addon' ),
-					'image' => esc_html__( 'Image', 'elementor-addon' ),
-				],
-			]
-		);
+				[
+					'label' => esc_html__( 'Icon Style', 'textdomain' ),
+					'type' => \Elementor\Controls_Manager::SELECT,
+					'default' => 'svg',
+					'options' => [
+						'icon' => esc_html__( 'Icon', 'textdomain' ),
+						'svg' => esc_html__( 'SVG', 'textdomain' ),
+						'image' => esc_html__( 'Image', 'textdomain' ),
+					],
+				]
+			);
 
+			$this->add_control(
+				'icon',
+				[
+					'label' => esc_html__( 'Choose Icon', 'textdomain' ),
+					'type' => \Elementor\Controls_Manager::ICONS,
+					'default' => [
+						'value' => 'fas fa-circle',
+						'library' => 'fa-solid',
+					],
+					'condition' => [
+						'icon_style' => 'icon',
+					],
+				]
+			);
 
-		$this->add_control(
-			'icon_type_separator',
-			[
-				'type' => \Elementor\Controls_Manager::DIVIDER,
-			]
-		);
+			// Selection Control for Icons
+			$this->add_control(
+				'svg',
+				[
+					'label' => esc_html__( 'SVG Icon Code', 'elementor-addon' ),
+					'type' => \Elementor\Controls_Manager::TEXTAREA,
+					'default' => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#clip0_10019_85763)"><path d="M16 6V0.665625L13.9719 2.69375C12.5094 1.04375 10.3812 0 8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C10.2094 16 12.2094 15.1063 13.6562 13.6562L12.2406 12.2437C11.1563 13.3281 9.65625 14 8 14C4.6875 14 2 11.3156 2 8C2 4.68438 4.6875 2 8 2C9.82812 2 11.45 2.82813 12.5469 4.11875L10.6656 6H16Z" fill="black"/></g><defs><clipPath id="clip0_10019_85763"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>',
+					'condition' => [
+						'icon_style' => 'svg',
+					],
+				]
+			);
 
+			$this->add_control(
+				'image',
+				[
+					'label' => esc_html__( 'Choose Image', 'textdomain' ),
+					'type' => \Elementor\Controls_Manager::MEDIA,
+					'default' => [
+						'url' => \Elementor\Utils::get_placeholder_image_src(),
+					],
 
-		// Font Awesome / Elementor Icon
-		$this->add_control(
-			'icon',
-			[
-				'label'       => esc_html__( 'Choose Icon', 'elementor-addon' ),
-				'type'        => \Elementor\Controls_Manager::ICONS,
-				'default'     => [
-					'value'   => 'fas fa-circle',
-					'library' => 'fa-solid',
-				],
-				'label_block' => true,
-				'condition'   => [
-					'icon_style' => 'icon',
-				],
-			]
-		);
+					'condition' => [
+						'icon_style' => 'image',
+					],
+				]
+			);
 
+			$this->add_control(
+				'icon_url',
+				[
+					'label' => esc_html__( 'Link', 'textdomain' ),
+					'type' => \Elementor\Controls_Manager::URL,
+					'options' => [ 'url', 'is_external', 'nofollow' ],
+					'default' => [
+						'url' => '#',
+						'is_external' => true,
+						'nofollow' => true,
+					],
+					'label_block' => true,
+				]
+			);
 
-		// SVG
-		$this->add_control(
-			'svg',
-			[
-				'label'       => esc_html__( 'SVG Icon Code', 'elementor-addon' ),
-				'type'        => \Elementor\Controls_Manager::TEXTAREA,
-				'placeholder' => esc_html__( '<svg>...</svg>', 'elementor-addon' ),
-				'label_block' => true,
-				'condition'   => [
-					'icon_style' => 'svg',
-				],
-			]
-		);
-
-
-		// Image
-		$this->add_control(
-			'image',
-			[
-				'label'   => esc_html__( 'Choose Image', 'elementor-addon' ),
-				'type'    => \Elementor\Controls_Manager::MEDIA,
-				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
-				],
-				'condition' => [
-					'icon_style' => 'image',
-				],
-			]
-		);
-
-
-		$this->add_control(
-			'icon_content_separator',
-			[
-				'type' => \Elementor\Controls_Manager::DIVIDER,
-			]
-		);
-
-
-		//=====================================================
-		// Title
-		//=====================================================
-
-		$this->add_control(
-			'title',
-			[
-				'label'       => esc_html__( 'Title', 'elementor-addon' ),
-				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Let Us Help', 'elementor-addon' ),
-				'placeholder' => esc_html__( 'Enter title', 'elementor-addon' ),
-				'label_block' => true,
-				'condition'   => [
-					'icon_layout' => 'icon_text',
-				],
-			]
-		);
-
-
-		//=====================================================
-		// Sub Title
-		//=====================================================
-
-		$this->add_control(
-			'sub_title',
-			[
-				'label'       => esc_html__( 'Sub Title', 'elementor-addon' ),
-				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Finding Your Right courses', 'elementor-addon' ),
-				'placeholder' => esc_html__( 'Enter sub title', 'elementor-addon' ),
-				'label_block' => true,
-				'condition'   => [
-					'icon_layout' => 'icon_text',
-				],
-			]
-		);
-
-
-		$this->end_controls_section();
+			$this->end_controls_section();
+		//============ Widget End ==========
 
 	}
 
 
-	//=========================================================
-	// Style Tab
-	//=========================================================
-
-	protected function register_style_section(): void {
-
-		// তোমার existing style controls এখানে add করতে পারবে।
-
+	protected function register_style_section(){
+		
+		
+		$this->icon_style_controls( 'icon', 'Icon Style', '.el-icon' );
+			
+		
 	}
 
 
@@ -231,175 +144,35 @@ class Mindu_Icon extends \Elementor\Widget_Base {
 	//=========================================================
 
 	protected function render(): void {
-
 		$settings = $this->get_settings_for_display();
-
-		$icon_layout = $settings['icon_layout'] ?? 'icon';
-		$icon_style  = $settings['icon_style'] ?? 'icon';
-
-
-		//=====================================================
-		// Icon Markup
-		//=====================================================
-
-		ob_start();
-
-		if ( 'icon' === $icon_style ) {
-
-			if ( ! empty( $settings['icon']['value'] ) ) {
-
-				\Elementor\Icons_Manager::render_icon(
-					$settings['icon'],
-					[
-						'aria-hidden' => 'true',
-					]
-				);
-
+		?>
+		
+		<span class="tp-section-subtitle el-icon"><?php 
+			if($settings['icon_style'] == 'icon') {
+				\Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] );
+			} elseif($settings['icon_style'] == 'image') {
+				?><img src="<?php echo esc_url($settings['image']['url']); ?>" alt=""><?php
+			} else {
+				echo $settings['svg'] ?? '';
 			}
-
-		} elseif ( 'svg' === $icon_style ) {
-
-			if ( ! empty( $settings['svg'] ) ) {
-
-				echo wp_kses(
-					$settings['svg'],
-					[
-						'svg' => [
-							'xmlns'       => true,
-							'width'       => true,
-							'height'      => true,
-							'viewBox'     => true,
-							'fill'        => true,
-							'stroke'      => true,
-							'stroke-width'=> true,
-							'class'       => true,
-							'aria-hidden' => true,
-						],
-						'g' => [
-							'fill'         => true,
-							'stroke'       => true,
-							'stroke-width' => true,
-							'transform'    => true,
-							'fill-rule'    => true,
-							'clip-rule'    => true,
-						],
-						'path' => [
-							'd'           => true,
-							'fill'        => true,
-							'stroke'      => true,
-							'stroke-width'=> true,
-							'fill-rule'   => true,
-							'clip-rule'   => true,
-						],
-						'circle' => [
-							'cx'    => true,
-							'cy'    => true,
-							'r'     => true,
-							'fill'  => true,
-							'stroke'=> true,
-						],
-						'rect' => [
-							'x'      => true,
-							'y'      => true,
-							'width'  => true,
-							'height' => true,
-							'rx'     => true,
-							'fill'   => true,
-							'stroke' => true,
-						],
-						'line' => [
-							'x1'    => true,
-							'x2'    => true,
-							'y1'    => true,
-							'y2'    => true,
-							'stroke'=> true,
-						],
-						'polygon' => [
-							'points' => true,
-							'fill'   => true,
-							'stroke' => true,
-						],
-					]
-				);
-
-			}
-
-		} elseif ( 'image' === $icon_style ) {
-
-			if ( ! empty( $settings['image']['url'] ) ) {
-
-				$image_url = $settings['image']['url'];
-
-				echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr__( 'Icon', 'elementor-addon' ) . '">';
-
-			}
-
-		}
-
-		$icon_markup = ob_get_clean();
-
-
-		//=====================================================
-		// Layout 01 - Icon Only
-		//=====================================================
-
-		if ( 'icon' === $icon_layout ) :
-
-			?>
-
-			<span class="mindu-icon">
-				<?php echo $icon_markup; ?>
-			</span>
-
-			<?php
-
-		endif;
-
-
-		//=====================================================
-		// Layout 02 - Icon With Text
-		//=====================================================
-
-		if ( 'icon_text' === $icon_layout ) :
-
-			?>
-
-			<div class="tp-course-banner-content d-flex align-items-center">
-
-				<div class="tp-course-banner-shape">
-					<?php echo $icon_markup; ?>
-				</div>
-
-				<div class="tp-course-banner-text">
-
-					<?php if ( ! empty( $settings['title'] ) ) : ?>
-
-						<span>
-							<?php echo esc_html( $settings['title'] ); ?>
-						</span>
-
-					<?php endif; ?>
-
-
-					<?php if ( ! empty( $settings['sub_title'] ) ) : ?>
-
-						<h2 class="tp-course-banner-title">
-							<?php echo esc_html( $settings['sub_title'] ); ?>
-						</h2>
-
-					<?php endif; ?>
-
-				</div>
-
-			</div>
-
-			<?php
-
-		endif;
-
+		?></span>
+		
+		<?php
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //=========================================================

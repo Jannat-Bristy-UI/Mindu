@@ -127,7 +127,7 @@ class Mindu_Heading extends \Elementor\Widget_Base {
 		$settings = $this->get_settings_for_display();
 
 		?>
-        <div class="tp-section-title-wrap mb-40 el-align">
+        <div class="tp-section-title-wrap el-align">
 
             <!-- Sub-Title Dynamic in elementor By custom widgets -->
             <?php if(!empty($settings['sub_title'])) : ?>
@@ -152,7 +152,7 @@ class Mindu_Heading extends \Elementor\Widget_Base {
 
 			<!-- Title Dynamic in elementor By custom widgets -->
             <?php if(!empty($settings['content'])) : ?>
-                <p class="tp-section-dec fw-500 mb-30 wow fadeInUp el-content " data-wow-duration=".9s" data-wow-delay=".4s">
+                <p class="tp-section-dec fw-500 wow fadeInUp el-content " data-wow-duration=".9s" data-wow-delay=".4s">
                     <?php echo mc_kses($settings['content']); ?>                    
                 </p>
             <?php endif; ?>
