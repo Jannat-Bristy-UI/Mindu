@@ -112,131 +112,339 @@ trait Hero_Content_Trait {
 
 
 
-        //=========== Button ==========
-        $this->start_controls_section(
-            'section_button',
-            [
-                'label' => esc_html__( 'Hero Button', 'elementor-addon' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
+        //=========== Primary Button ==========
+            $this->start_controls_section(
+                'section_button',
+                [
+                    'label' => esc_html__( 'Primary Button', 'elementor-addon' ),
+                    'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                ]
+            );
 
-        // Button Text
-        $this->add_control(
-            'button_text',
-            [
-                'label'       => esc_html__( 'Button Text', 'elementor-addon' ),
-                'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Find Courses', 'elementor-addon' ),
-                'placeholder' => esc_html__( 'Enter button text', 'elementor-addon' ),
-            ]
-        );
+            // Button Text
+            $this->add_control(
+                'button_text',
+                [
+                    'label'       => esc_html__( 'Button Text', 'elementor-addon' ),
+                    'type'        => \Elementor\Controls_Manager::TEXT,
+                    'default'     => esc_html__( 'Find Courses', 'elementor-addon' ),
+                    'placeholder' => esc_html__( 'Enter button text', 'elementor-addon' ),
+                ]
+            );
 
-        // Button Link
-        $this->add_control(
-            'button_url',
-            [
-                'label'       => esc_html__( 'Link', 'elementor-addon' ),
-                'type'        => \Elementor\Controls_Manager::URL,
-                'options'     => [ 'url', 'is_external', 'nofollow' ],
-                'default'     => [
-                    'url'         => '#',
-                    'is_external' => false,
-                    'nofollow'    => false,
-                ],
-                'label_block' => true,
-            ]
-        );
-
-        // Icon Type
-        $this->add_control(
-            'icon_type',
-            [
-                'label'   => esc_html__( 'Icon Type', 'textdomain' ),
-                'type'    => \Elementor\Controls_Manager::CHOOSE,
-                'default' => 'svg',
-                'options' => [
-                    'icon' => [
-                        'title' => esc_html__( 'Icon', 'textdomain' ),
-                        'icon'  => 'eicon-star',
+            // Button Link
+            $this->add_control(
+                'button_url',
+                [
+                    'label'       => esc_html__( 'Link', 'elementor-addon' ),
+                    'type'        => \Elementor\Controls_Manager::URL,
+                    'options'     => [ 'url', 'is_external', 'nofollow' ],
+                    'default'     => [
+                        'url'         => '#',
+                        'is_external' => false,
+                        'nofollow'    => false,
                     ],
-                    'svg' => [
-                        'title' => esc_html__( 'SVG', 'textdomain' ),
-                        'icon'  => 'eicon-code',
-                    ],
-                ],
-                'toggle' => false,
-            ]
-        );
+                    'label_block' => true,
+                ]
+            );
 
-        // Elementor Icon
-       $this->add_control(
-				'button_icon',
-				[
-					'label' => esc_html__( 'Choose Icon', 'textdomain' ),
-					'type' => \Elementor\Controls_Manager::ICONS,
-					'default' => [
-                        'value' => 'fas fa-arrow-right',
+
+
+            $this->add_control( 
+                'icon_type', 
+                [ 
+                    'label'   => esc_html__( 'Icon Type', 'elementor-addon' ), 
+                    'type'    => \Elementor\Controls_Manager::CHOOSE, 
+                    'default' => 'icon', 
+                    'options' => [ 
+                        'icon' => [ 
+                            'title' => esc_html__( 'Icon', 'elementor-addon' ), 
+                            'icon'  => 'eicon-star', 
+                        ], 
+    
+                        'svg' => [ 
+                            'title' => esc_html__( 'SVG', 'elementor-addon' ), 
+                            'icon'  => 'eicon-code', 
+                        ], 
+                    ], 
+                    'toggle' => false, 
+                ] 
+            ); 
+
+            // Icon Type
+            $this->add_control( 
+                'button_icon', 
+                [ 
+                    'label'   => esc_html__( 'Choose Icon', 'textdomain' ), 
+                    'type'    => \Elementor\Controls_Manager::ICONS, 
+                    'default' => [ 
+                        'value'   => 'fas fa-circle', 
+                        'library' => 'fa-solid', 
+                    ], 
+    
+                    'condition' => [ 
+                        'icon_type' => 'icon', 
+                    ], 
+                ] 
+            ); 
+    
+            $this->add_control( 
+                'svg', 
+                [ 
+                    'label'     => esc_html__( 'SVG Code', 'elementor-addon' ), 
+                    'type'      => \Elementor\Controls_Manager::TEXTAREA, 
+                    'rows'      => 8, 
+                    'default'   => '', 
+                    'condition' => [ 
+                        'icon_type' => 'svg', 
+                    ], 
+                ] 
+            ); 
+
+
+            // Icon Size
+            $this->add_responsive_control(
+                'icon_size',
+                [
+                    'label' => esc_html__( 'Icon Size', 'elementor-addon' ),
+                    'type'  => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', 'em', 'rem' ],
+
+                    'default' => [
+                        'size' => 16,
+                        'unit' => 'px',
+                    ],
+
+                    'range' => [
+                        'px' => [
+                            'min' => 8,
+                            'max' => 100,
+                        ],
+                    ],
+
+                    'selectors' => [
+                        '{{WRAPPER}} .tp-btn-icon i' =>
+                            'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .tp-btn-icon svg' =>
+                            'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            // Icon Gap
+            $this->add_responsive_control(
+                'icon_gap',
+                [
+                    'label' => esc_html__( 'Icon Gap', 'elementor-addon' ),
+                    'type'  => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', 'em', 'rem' ],
+
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 50,
+                        ],
+                    ],
+
+                    'selectors' => [
+                        '{{WRAPPER}} .tp-btn-icon' =>
+                            'margin-inline-start: {{SIZE}}{{UNIT}}; margin-inline-end: 0;',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
+
+        // End===>
+
+
+        //=========== Transparent Button ==========
+            $this->start_controls_section(
+                'section_transparent_button',
+                [
+                    'label' => esc_html__( 'Transparent Button', 'elementor-addon' ),
+                    'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+					'hero_style' => 'hero_style_02',
+				],
+                ]
+            );
+
+            // Button Text
+            $this->add_control(
+                'button_text_2',
+                [
+                    'label'       => esc_html__( 'Button Text', 'elementor-addon' ),
+                    'type'        => \Elementor\Controls_Manager::TEXT,
+                    'default'     => esc_html__( 'Join free today', 'elementor-addon' ),
+                    'placeholder' => esc_html__( 'Enter button text', 'elementor-addon' ),
+                ]
+            );
+
+            // Button Link
+            $this->add_control(
+                'button_url_2',
+                [
+                    'label'       => esc_html__( 'Link', 'elementor-addon' ),
+                    'type'        => \Elementor\Controls_Manager::URL,
+                    'options'     => [ 'url', 'is_external', 'nofollow' ],
+                    'default'     => [
+                        'url'         => '#',
+                        'is_external' => false,
+                        'nofollow'    => false,
+                    ],
+                    'label_block' => true,
+                ]
+            );
+
+            // Icon Type
+            $this->add_control(
+                'icon_type_2',
+                [
+                    'label'   => esc_html__( 'Icon Type', 'elementor-addon' ),
+                    'type'    => \Elementor\Controls_Manager::CHOOSE,
+                    'default' => 'icon',
+                    'options' => [
+                        'icon' => [
+                            'title' => esc_html__( 'Icon', 'elementor-addon' ),
+                            'icon'  => 'eicon-star',
+                        ],
+
+                        'svg' => [
+                            'title' => esc_html__( 'SVG', 'elementor-addon' ),
+                            'icon'  => 'eicon-code',
+                        ],
+                    ],
+                    'toggle' => false,
+                ]
+            );
+
+            // Button Icon
+            $this->add_control(
+                'button_2_icon',
+                [
+                    'label'   => esc_html__( 'Choose Icon', 'elementor-addon' ),
+                    'type'    => \Elementor\Controls_Manager::ICONS,
+                    'default' => [
+                        'value'   => 'fas fa-circle',
                         'library' => 'fa-solid',
                     ],
-					'condition' => [
-						'icon_type' => 'icon',
-					],
-				]
-			);
 
-        // SVG Code
-        $this->add_control(
-            'svg_code',
-            [
-                'label'     => esc_html__( 'SVG Code', 'elementor-addon' ),
-                'type'      => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => '<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.71527 1L13 5.28471L8.71527 9.56941" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M1 5.28473H12.88" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>',
-                'condition' => [
-                    'icon_type' => 'svg',
-                ],
-            ]
-        );
+                    'condition' => [
+                        'icon_type_2' => 'icon',
+                    ],
+                ]
+            );
 
-        $this->end_controls_section();
+            // Button SVG
+            $this->add_control(
+                'button_2_svg',
+                [
+                    'label'     => esc_html__( 'SVG Code', 'elementor-addon' ),
+                    'type'      => \Elementor\Controls_Manager::TEXTAREA,
+                    'rows'      => 8,
+                    'default'   => '#',
+
+                    'condition' => [
+                        'icon_type_2' => 'svg',
+                    ],
+                ]
+            );
+
+            // Icon Size
+            $this->add_responsive_control(
+                'icon_size_2',
+                [
+                    'label'      => esc_html__( 'Icon Size', 'elementor-addon' ),
+                    'type'       => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', 'em', 'rem' ],
+
+                    'default' => [
+                        'size' => 16,
+                        'unit' => 'px',
+                    ],
+
+                    'range' => [
+                        'px' => [
+                            'min' => 8,
+                            'max' => 100,
+                        ],
+                    ],
+
+                    'selectors' => [
+                        '{{WRAPPER}} .tp-btn-icon-2 i' =>
+                            'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .tp-btn-icon-2 svg' =>
+                            'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            // Icon Gap
+            $this->add_responsive_control(
+                'icon_gap_2',
+                [
+                    'label'      => esc_html__( 'Icon Gap', 'elementor-addon' ),
+                    'type'       => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => [ 'px', 'em', 'rem' ],
+
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 50,
+                        ],
+                    ],
+
+                    'selectors' => [
+                        '{{WRAPPER}} .tp-btn-icon-2' =>
+                            'margin-inline-start: {{SIZE}}{{UNIT}}; margin-inline-end: 0;',
+                    ],
+                ]
+            );
+
+            $this->end_controls_section();
+
+        // End===>
+
+
+
 
 
         // =======================
         // Explore Button
         // =======================
-        $this->start_controls_section(
-			'section_explore_button',
-			[
-				'label' => esc_html__( 'Button Explore', 'elementor-addon' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-				// 'condition' => [
-				// 	'design_layout' => 'style_1',
-				// ],
-			]
-		);
+            $this->start_controls_section(
+                'section_explore_button',
+                [
+                    'label' => esc_html__( 'Explore Button', 'elementor-addon' ),
+                    'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'hero_style' => 'hero_style_01',
+                    ],
+                ]
+            );
 
-		$this->add_control(
-			'button_explore_text',
-			[
-				'label' => esc_html__( 'Button Text', 'elementor-addon' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Button Text', 'elementor-addon' ),
-			]
-		);
+            $this->add_control(
+                'button_explore_text',
+                [
+                    'label' => esc_html__( 'Button Text', 'elementor-addon' ),
+                    'type' => \Elementor\Controls_Manager::TEXT,
+                    'default' => esc_html__( 'Button Text', 'elementor-addon' ),
+                ]
+            );
 
-		$this->add_control(
-			'button_explore_url',
-			[
-				'label' => esc_html__( 'URL', 'elementor-addon' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( '#explore', 'elementor-addon' ),
-			]
-		);
+            $this->add_control(
+                'button_explore_url',
+                [
+                    'label' => esc_html__( 'URL', 'elementor-addon' ),
+                    'type' => \Elementor\Controls_Manager::TEXT,
+                    'default' => esc_html__( '#explore', 'elementor-addon' ),
+                ]
+            );
 
-		$this->end_controls_section();
+            $this->end_controls_section();
+
+        // End
 
 
         // =======================
@@ -334,9 +542,9 @@ trait Hero_Content_Trait {
             [
                 'label' => esc_html__( 'Video', 'elementor-addon' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-                // 'condition' => [
-                //     'design_layout' => 'style_1',
-                // ],
+                'condition' => [
+					'hero_style' => 'hero_style_01',
+				],
             ]
         );
 
@@ -371,6 +579,38 @@ trait Hero_Content_Trait {
         );
 
         $this->end_controls_section();
+        
+
+        $this->start_controls_section(
+			'section_cf7',
+			[
+				'label' => esc_html__( 'Contact Form', 'elementor-addon' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'form_title',
+			[
+				'label' => esc_html__( 'Form Text', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Form Content', 'elementor-addon' ),
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'form_shortcode',
+			[
+				'label' => esc_html__( 'Shortcode', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+		);
+
+		$this->end_controls_section();
+
+
 
     }
 }

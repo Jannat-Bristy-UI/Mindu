@@ -357,15 +357,15 @@ class Mindu_Button_D extends \Elementor\Widget_Base {
 			<?php if ( ! empty( $settings['button_text'] ) ) : ?> 
 				<a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>> 
 					<?php echo mc_kses($settings['button_text']); ?> 
-					<span class="ml-8">
-						<span class="ml-8 tp-btn-icon"> 
-							<?php if($settings['icon_type'] == 'icon') :?> 
-								<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                     
-							<?php else : ?>   
-								<?php echo mc_kses($settings['svg']); ?>   
-							<?php endif;?>  
-						</span>
+					
+					<span class="ml-8 tp-btn-icon"> 
+						<?php if($settings['icon_type'] == 'icon') :?> 
+							<?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                     
+						<?php else : ?>   
+							<?php echo mc_kses($settings['svg']); ?>   
+						<?php endif;?>  
 					</span>
+					
 				</a>
 			<?php endif; ?>
 

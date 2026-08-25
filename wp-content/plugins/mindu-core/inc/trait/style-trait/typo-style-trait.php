@@ -7,6 +7,7 @@
 trait Typo_Style_Controls{
     
     public function typo_style_controls($id, $label = 'Title', $selector = ''){
+		
         $this->start_controls_section(
 			$id . 'section_style',
 			[

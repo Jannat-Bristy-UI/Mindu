@@ -293,7 +293,6 @@ class Mindu_Hero extends \Elementor\Widget_Base {
 
 		$this->end_controls_section();
 
-
 	}
 
 	// style tab 
@@ -328,6 +327,7 @@ class Mindu_Hero extends \Elementor\Widget_Base {
 
 			<div class="container">
 				<div class="row align-items-end">
+					
 					<div class="col-xxl-8 col-xl-7">
 						
 					</div>

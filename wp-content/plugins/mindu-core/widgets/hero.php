@@ -49,16 +49,15 @@ class Mindu_Hero extends \Elementor\Widget_Base {
     // ====== Style Controls ======
     protected function register_style_section() {
 
-        // Typography
+        // Typography 
         $this->typo_style_controls( 'sub_title', 'Sub-Title', '.el-sub-title' );
         $this->typo_style_controls( 'title', 'Title', '.el-title' );
-
-        // FIXED selector
         $this->typo_style_controls( 'content', 'Content', '.el-content' );
 
         // Buttons
-        $this->button_style_controls('button','Button Style','.el-tp-btn');	
-        $this->button_style_controls( 'explore', 'Explore Button Style', '.hero-explore-btn' );
+        $this->button_style_controls('button','Primary Button','.el-tp-btn');	
+        $this->button_style_controls('transparent','Transparent Button','.el-tp-btn-transparent');	
+        $this->button_style_controls( 'explore', 'Explore Button', '.hero-explore-btn' );
     }
 
     // ====== Render ======
@@ -66,22 +65,161 @@ class Mindu_Hero extends \Elementor\Widget_Base {
 
         $settings = $this->get_settings_for_display();
 
-        if(!empty($settings['button_text'])){
-			$this->add_link_attributes( 'button_arg', $settings['button_url'] );
-			$this->add_render_attribute('button_arg', 'class', 'el-tp-btn tp-btn tp-btn-square');
-		}
+            if(!empty($settings['button_text'])){
+				$this->add_link_attributes( 'button_arg', $settings['button_url'] );
+				$this->add_render_attribute('button_arg', 'class', 'tp-btn tp-btn-xl mr-20 el-tp-btn');
+			}
+
+			if(!empty($settings['button_text_2'])){
+				$this->add_link_attributes( 'button_arg_2', $settings['button_url_2'] );
+				$this->add_render_attribute('button_arg_2', 'class', 'tp-btn tp-btn-transparent el-tp-btn-transparent');
+			}
 
        
        
         ?>
 
         <?php if($settings['hero_style'] == 'hero_style_02') : ?>
+
+            <!-- Hero Style-02 Markup -->
+            <div class="tp-hero-area tp-hero-overly p-relative z-1 tp-hero-2-overly p-relative bg-position z-1 pt-120" 
+                style="background-image: url(<?php echo esc_url( $settings['hero_image']['url'] ); ?>);">
+                <img class="tp-hero-2-shape d-none d-md-block upslide" src="assets/img/hero/two/shape.png" alt="">
+                <div class="container">
+                    <div class="row align-items-end">
+                        <!-- Hero Content Part -->
+                        <div class="col-xxl-8 col-xl-7">
+                            <div class="tp-hero-2-content">
+                                <!-- Sub-Title -->
+                                <span class="tp-section-subtitle text-white d-inline-block mb-10 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".3s">
+                                    <span class="mr-5">
+                                        <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.625 7.76196V10.1183C14.625 10.9741 14.1019 11.7379 13.2919 12.0954C12.3075 12.5287 10.8169 13 9 13C7.18313 13 5.6925 12.5287 4.7025 12.0954C3.89812 11.7379 3.375 10.9741 3.375 10.1183V7.76196L7.37437 9.52242C7.88625 9.74993 8.4375 9.86368 9 9.86368C9.5625 9.86368 10.1137 9.74993 10.6256 9.52242L14.625 7.76196Z" fill="currentColor" />
+                                            <path d="M16.8751 6.77063V10.2915C16.8751 10.5895 16.6219 10.8332 16.3126 10.8332C16.0032 10.8332 15.7501 10.5895 15.7501 10.2915V7.26898L16.8751 6.77063Z" fill="currentColor" />
+                                            <path d="M7.84013 8.53863C8.20856 8.70059 8.604 8.78184 9 8.78184C9.396 8.78184 9.79088 8.70113 10.1599 8.53863L17.3436 5.37631C17.7486 5.19809 18 4.82054 18 4.39099C18 3.96144 17.7486 3.58335 17.3436 3.40513L10.1599 0.24335C9.42244 -0.0811165 8.57812 -0.0811165 7.84069 0.24335L0.656438 3.40459C0.251438 3.58335 0 3.9609 0 4.39045C0 4.82 0.251438 5.19755 0.656438 5.37631L7.84013 8.53863Z" fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <?php echo mc_kses( $settings['hero_sub_title'] ); ?>
+                                </span>
+
+                                <!-- Title -->
+                                <h2 class="tp-hero-2-title fw-700 mb-40 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".4s">
+                                    <?php echo mc_kses( $settings['hero_title'] ); ?>
+                                </h2>
+
+
+                                <!-- Primary Button-->
+                                <?php if(!empty($settings['button_text'])) : ?>
+                                    <div class=" d-inline-flex wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".7s">
+                                        <a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>>
+                                            <?php echo mc_kses($settings['button_text']); ?>
+
+                                            <span class="ml-8 tp-btn-icon">
+                                                <?php if ( $settings['icon_type'] == 'icon' ) : ?>
+                                                    <?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                                <?php else : ?>
+                                                    <?php echo mc_kses( $settings['svg'] ); ?>
+                                                <?php endif; ?>
+                                            </span>
+
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+
+
+                               <!-- Transparent Button -->
+                                <?php if ( ! empty( $settings['button_text_2'] ) ) : ?>
+                                    <div class="d-inline-flex wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".7s">
+                                        <a <?php echo $this->get_render_attribute_string( 'button_arg_2' ); ?>>
+                                            <?php echo mc_kses( $settings['button_text_2'] ); ?>
+
+                                            <span class="ml-8 tp-btn-icon-2">
+
+                                                <?php if ( $settings['icon_type_2'] == 'icon' ) : ?>
+                                                    <?php \Elementor\Icons_Manager::render_icon( $settings['button_2_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                                <?php else : ?>
+                                                    <?php echo mc_kses( $settings['button_2_svg'] ); ?>
+                                                <?php endif; ?>
+
+                                            </span>
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+
+
+                                <!-- Description -->
+                                <h2 class="tp-hero-2-dec mt-180 mb-50 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".7s">
+                                    <?php echo mc_kses( $settings['hero_content'] ); ?>
+                                </h2>
+
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="col-xxl-4 col-xl-5">
+                            <div class="tp-hero-2-form text-center wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".5s">
+                                <h2 class="tp-hero-2-form-title fw-700 mb-25">
+                                    <?php echo mc_kses( $settings['form_title'] ); ?>
+                                </h2>
+
+                                <?php echo do_shortcode($settings['form_shortcode'] ); ?>
+                                <form action="#">
+                                    <div class="row gx-10">
+                                    <div class="col-lg-6">
+                                        <div class="tp-hero-2-form-input mb-15">
+                                            <input class="tp-input" type="text" placeholder="Fast Name*">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="tp-hero-2-form-input mb-15">
+                                            <input class="tp-input" type="text" placeholder="Last Name*">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="tp-hero-2-form-input mb-15">
+                                            <input class="tp-input" type="text" placeholder="Email*">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="tp-hero-2-form-input mb-15">
+                                            <input class="tp-input" type="text" placeholder="Company Name*">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="tp-hero-2-form-input mb-15">
+                                            <textarea class="tp-input tp-textarea" placeholder="Message*"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="tp-hero-2-form-btn-wrap">
+                                            <div class="tp-hero-2-form-checkbox d-flex align-items-start mb-25">
+                                                <input class="tp-checkbox" type="checkbox" id="agree">
+                                                <label class="tp-agree" for="agree">I confirm my data may be <a href="#">collected and stored.</a></label>
+                                            </div>
+                                            <button type="submit" class="tp-btn w-100 justify-content-center">Submit</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <!-- Hero-area-end -->
             
 
         <?php else:
 
 
-        ?>
+
+            if(!empty($settings['button_text'])){
+				$this->add_link_attributes( 'button_arg', $settings['button_url'] );
+				$this->add_render_attribute('button_arg', 'class', 'tp-btn tp-btn-square el-tp-btn');
+			}
+			?>
+			    
+            <!-- Hero MerkUp-01 -->
             <div class="tp-hero-spacing z-1 tp-hero-overly p-relative bg-position tp-hero-area" style="background-image: url(<?php echo esc_url( $settings['hero_image']['url'] ); ?>);">          
                 <span class="tp-hero-shape upslide d-none d-lg-block">
                     <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,11 +230,12 @@ class Mindu_Hero extends \Elementor\Widget_Base {
                     <div class="row align-items-end">
                         <div class="col-xl-7">
                             <div class="tp-hero-content mb-40">
-                                <!-- Hero Content -->
+
+                                <!--============== Hero Content =============-->
                                 <div class="el-hero-content">
                                     <!-- Sub-Title -->
                                     <?php if ( ! empty( $settings['hero_sub_title'] ) ) : ?>
-                                        <div class="tp-hero-ratings-wrap d-inline-flex mb-15">
+                                        <div class="tp-hero-ratings-wrap d-inline-flex mb-15 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s">
                                             <span class="tp-hero-ratings-text el-sub-title mr-10 d-flex align-items-center">
                                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M7 0L9.163 4.60778L14 5.35121L10.5 8.93586L11.326 14L7 11.6078L2.674 14L3.5 8.93586L0 5.35121L4.837 4.60778L7 0Z" fill="currentColor" />
@@ -135,14 +274,14 @@ class Mindu_Hero extends \Elementor\Widget_Base {
                                     
                                     <!-- Title -->
                                     <?php if ( ! empty( $settings['hero_title'] ) ) : ?>
-                                        <h2 class="tp-hero-title el-title mb-25">
+                                        <h2 class="tp-hero-title el-title mb-25 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s">
                                             <?php echo mc_kses( $settings['hero_title'] ); ?>
                                         </h2>
                                     <?php endif; ?>
 
                                     <!-- Content -->
                                     <?php if ( ! empty( $settings['hero_content'] ) ) : ?>
-                                        <p class="tp-hero-dec el-content mb-30">
+                                        <p class="tp-hero-dec el-content mb-30 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s">
                                             <?php echo mc_kses( $settings['hero_content'] ); ?>
                                         </p>
                                     <?php endif; ?>
@@ -151,25 +290,25 @@ class Mindu_Hero extends \Elementor\Widget_Base {
 
                                 <!-- Hero Button -->                          
                                 <?php if ( ! empty( $settings['button_text'] ) ) : ?>
-                                    <a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>>
+                                    <div class="wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".8s">
+                                        <a <?php echo $this->get_render_attribute_string( 'button_arg' ); ?>>
 
-                                        <?php echo esc_html( $settings['button_text'] ); ?>
+                                            <?php echo esc_html( $settings['button_text'] ); ?>
 
-                                        <span class="tp-btn-icon ml-8">
-                                            <?php if($settings['icon_type'] == 'icon') :?>
-                                                <?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                   
-                                            <?php else : ?>
-                                                <?php echo $settings['svg_code']; ?>
-                                            <?php endif;?>
-                                        </span>
-
-                                        
-                                    </a>
+                                            <span class="tp-btn-icon ml-8">
+                                                <?php if($settings['icon_type'] == 'icon') :?>
+                                                    <?php \Elementor\Icons_Manager::render_icon( $settings['button_icon'], [ 'aria-hidden' => 'true' ] ); ?>                                   
+                                                <?php else : ?>
+                                                    <?php echo $settings['svg_code']; ?>
+                                                <?php endif;?>
+                                            </span>
+                                        </a>
+                                    </div>
                                 <?php endif; ?>
 
                                 <!-- Explore Button -->
                                 <?php if(!empty($settings['button_explore_text'])) : ?>
-                                <div class="tp-hero-explore mt-115 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".8s">
+                                <div class="tp-hero-explore hero-explore-btn mt-115 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".8s">
                                     <a href="<?php echo mc_kses($settings['button_explore_url']); ?>" class="tp-hero-btn">
                                     <svg class="mr-15" width="15" height="61" viewBox="0 0 15 61" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8.12249 60.7077C7.73483 61.101 7.10168 61.1056 6.70832 60.718L0.298073 54.4006C-0.0952914 54.013 -0.0999129 53.3798 0.287751 52.9865C0.675414 52.5931 1.30856 52.5885 1.70193 52.9761L7.39992 58.5916L13.0153 52.8936C13.403 52.5002 14.0361 52.4956 14.4295 52.8832C14.8229 53.2709 14.8275 53.904 14.4398 54.2974L8.12249 60.7077ZM6.9723 0.00732422L7.97227 2.51429e-05L8.41022 59.9984L7.41024 60.0057L6.41027 60.013L5.97232 0.0146233L6.9723 0.00732422Z" fill="currentColor" />
@@ -202,14 +341,14 @@ class Mindu_Hero extends \Elementor\Widget_Base {
                                 </div>
                             </div>
                         <?php endif; ?>
-
                     </div>
                 </div>
             </div>
+
+
+
+
         <?php endif;  ?>
-
-
-
 
         <?php
     } // end render()

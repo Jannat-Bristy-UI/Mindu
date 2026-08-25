@@ -23,7 +23,19 @@ class Mindu_Brand extends \Elementor\Widget_Base {
 
 
 
-	protected function register_controls(): void {
+	// ====== Register Controls ======
+    protected function register_controls(): void {
+
+        // Content Tab
+        $this->register_controls_section();
+
+        // Style Tab
+        $this->register_style_section();
+    }
+
+
+
+	protected function register_controls_section() {
 
 		// Content Tab Start
 
@@ -35,6 +47,19 @@ class Mindu_Brand extends \Elementor\Widget_Base {
 					'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 				]
 			);
+
+			$this->add_control( 
+				'design_layout', 
+				[ 
+					'label' => esc_html__( 'Brand Layout', 'textdomain' ), 
+					'type' => \Elementor\Controls_Manager::SELECT, 
+					'default' => 'style_1', 
+					'options' => [ 
+						'style_1' => esc_html__( 'Layout 01', 'textdomain' ), 
+						'style_2' => esc_html__( 'Layout 02', 'textdomain' ), 
+					], 
+				] 
+			); 
 
 			// Repeater Control
 			$repeater = new \Elementor\Repeater();
@@ -48,6 +73,8 @@ class Mindu_Brand extends \Elementor\Widget_Base {
 					],
 				]
 			);
+
+			
 			
 			// Items data Store here
 			$this->add_control(
@@ -75,28 +102,51 @@ class Mindu_Brand extends \Elementor\Widget_Base {
 				]
 			);
 
+
+
 			$this->end_controls_section();
 		//======= End Widget  =======
 
 		// Content Tab End
 
+	}
+
+	protected function register_style_section() {
+
 
 		// Style Tab Start
+		// ================= Image Style =================
 		$this->start_controls_section(
-			'section_title_style',
+			'brand_image_style_section',
 			[
-				'label' => esc_html__( 'Title', 'elementor-addon' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'label' => esc_html__( 'Image Style', 'elementor-addon' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 
-		$this->add_control(
-			'title_color',
+		// Image Height
+		$this->add_responsive_control(
+			'brand_image_height',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor-addon' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label'      => esc_html__( 'Height', 'elementor-addon' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'vh' ],
+				'range'      => [
+					'px' => [
+						'min' => 10,
+						'max' => 500,
+					],
+					'%' => [
+						'min' => 10,
+						'max' => 100,
+					],
+					'vh' => [
+						'min' => 1,
+						'max' => 50,
+					],
+				],
 				'selectors' => [
-					'{{WRAPPER}} .hello-world' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tp-brand-item img' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -111,21 +161,53 @@ class Mindu_Brand extends \Elementor\Widget_Base {
 
 		?>
 
-		<div class="tp-brand-area fix">
-			<div class="swiper tp-brand-slider">
-				<div class="swiper-wrapper slide-transtion">
+		<?php if($settings['design_layout'] == 'style_2') : ?>
 
-					<?php foreach ($settings['list'] as $item) : ?>
-						<div class="swiper-slide">
-							<div class="tp-brand-item">
-								<img src="<?php echo esc_url($item['image']['url']); ?>" alt="#">
+
+			<!-- tp-brands-area-start -->
+			<div class="tp-brand-area fix p-relative m-z-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="swiper tp-brand-slider tp-brand-2-slider">
+								<div class="swiper-wrapper slide-transtion">
+									
+									<?php foreach ($settings['list'] as $item) : ?>
+										<div class="swiper-slide">
+											<div class="tp-brand-item">
+												<img src="<?php echo esc_url($item['image']['url']); ?>" alt="#">
+											</div>
+										</div>
+									<?php endforeach; ?>
+
+								</div>
 							</div>
 						</div>
-					<?php endforeach; ?>
-
+					</div>
 				</div>
 			</div>
-		</div>
+			<!-- tp-brands-area-end -->
+
+		<?php else: ?>
+
+			<div class="tp-brand-area fix">
+				<div class="swiper tp-brand-slider">
+					<div class="swiper-wrapper slide-transtion">
+
+						<?php foreach ($settings['list'] as $item) : ?>
+							<div class="swiper-slide">
+								<div class="tp-brand-item">
+									<img src="<?php echo esc_url($item['image']['url']); ?>" alt="#">
+								</div>
+							</div>
+						<?php endforeach; ?>
+
+					</div>
+				</div>
+			</div>
+
+		
+		<?php endif;  ?>
 
 		<?php
 
