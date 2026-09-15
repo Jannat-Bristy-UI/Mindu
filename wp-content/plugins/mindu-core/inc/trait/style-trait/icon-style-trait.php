@@ -35,6 +35,7 @@ trait Icon_Style_Trait {
 				'label'      => esc_html__( 'Size', 'elementor-addon' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em', 'rem' ],
+	
 				'range'      => [
 					'px' => [
 						'min' => 1,
@@ -51,86 +52,153 @@ trait Icon_Style_Trait {
 						'step' => 0.1,
 					],
 				],
-				'selectors' => [
-
-					// Font Awesome / Icon Fonts
-					'{{WRAPPER}} ' . $selector . ' i' =>
-						'font-size: {{SIZE}}{{UNIT}};',
-
-					// SVG Icon
-					'{{WRAPPER}} ' . $selector . ' svg' =>
-						'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-
-					// SVG inner elements
-					'{{WRAPPER}} ' . $selector . ' svg *' =>
-						'width: auto; height: auto;',
+					'selectors'  => [
+						'{{WRAPPER}} ' . $selector . ' i' => 'font-size: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} ' . $selector . ' svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+						
 				],
 			]
 		);
 
 
-        // ==========================================
-        // Icon Box Width
-        // ==========================================
+		// ==========================================
+		// Icon Alignment
+		// ==========================================
 
-        $this->add_responsive_control(
-            $id . '_icon_box_width',
-            [
-                'label'      => esc_html__( 'Width', 'elementor-addon' ),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%', 'vw' ],
-                'range'      => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 500,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                    'vw' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector =>
-                        'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+		$this->add_responsive_control(
+			$id . '_alignment',
+			[
+				'label'     => esc_html__( 'Alignment', 'elementor-addon' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
 
+				'options'   => [
+					'flex-start' => [
+						'title' => esc_html__( 'Left', 'elementor-addon' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor-addon' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Right', 'elementor-addon' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+
+				'default' => 'center',
+				'toggle'  => true,
+
+				'selectors' => [
+					'{{WRAPPER}} ' . $selector => '
+						display: inline-flex;
+						justify-content: {{VALUE}};
+						align-items: center;
+					',
+				],
+			]
+		);
+
+
+
+		// ==========================================
+		// Vertical Alignment
+		// ==========================================
+
+		$this->add_responsive_control(
+			$id . '_vertical_alignment',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'elementor-addon' ),
+				'type'  => \Elementor\Controls_Manager::CHOOSE,
+
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Top', 'elementor-addon' ),
+						'icon'  => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'elementor-addon' ),
+						'icon'  => 'eicon-v-align-middle',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Bottom', 'elementor-addon' ),
+						'icon'  => 'eicon-v-align-bottom',
+					],
+				],
+
+				'default' => 'center',
+
+				'selectors' => [
+					'{{WRAPPER}} ' . $selector =>
+						'display: inline-flex; align-items: {{VALUE}};',
+				],
+			]
+		);
+       
 
         // ==========================================
-        // Icon Box Height
-        // ==========================================
+		// Icon Box Width
+		// ==========================================
 
-        $this->add_responsive_control(
-            $id . '_icon_box_height',
-            [
-                'label'      => esc_html__( 'Height', 'elementor-addon' ),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%', 'vh' ],
-                'range'      => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 500,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                    'vh' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector =>
-                        'height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+		$this->add_responsive_control(
+			$id . '_icon_box_width',
+			[
+				'label'      => esc_html__( 'Width', 'elementor-addon' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'vw' ],
+				'range'      => [
+					'px' => [
+						'min' => 0,
+						'max' => 500,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+					'vw' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} ' . $selector =>
+					'width: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
+				],
+			]
+		);
+
+
+		// ==========================================
+		// Icon Box Height
+		// ==========================================
+
+		$this->add_responsive_control(
+			$id . '_icon_box_height',
+			[
+				'label'      => esc_html__( 'Height', 'elementor-addon' ),
+				'type'       => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'vh' ],
+				'range'      => [
+					'px' => [
+						'min' => 0,
+						'max' => 500,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+					'vh' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} ' . $selector =>
+			'height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
+				],
+			]
+		);
+
 
 
 		// ==========================================

@@ -10,27 +10,44 @@
  * Requires Plugins: elementor
  * Elementor tested up to: 3.25.0
  * Elementor Pro tested up to: 3.25.0
- */
+*/
 
+
+// ==================== Core Components ====================
+
+// Load Core Helper Files
 require_once( __DIR__ . '/inc/plugin-helper.php' );
-require_once( __DIR__ . '/inc/trait/common-trait.php' );
-require_once( __DIR__ . '/inc/trait/common-icon.php' );
+require_once( __DIR__ . '/inc/breadcrumb.php' );
+
+
+// Register Post Types Part files
+require_once( __DIR__ . '/inc/post-type/tp-services.php');
 require_once( __DIR__ . '/inc/post-type/header-post-type.php' );
 require_once( __DIR__ . '/inc/post-type/footer-post-type.php' );
+require_once( __DIR__ . '/inc/post-type/offcanvas-type.php' );
+require_once( __DIR__ . '/inc/post-type/mindu-builder-menu.php' ); 
 
 
+// theme builder admin UI (header / footer / offcanvas)
+require_once( __DIR__ . '/inc/settings/theme-builder.php' );
+
+
+// Load Trait files (Content & Style)
+require_once( __DIR__ . '/inc/trait/common-trait.php' );
+require_once( __DIR__ . '/inc/trait/common-icon.php' );
 require_once( __DIR__ . '/inc/trait/content-trait/hero-content-trait.php' );
-// require_once( __DIR__ . '/inc/trait/content-trait/vector-content-trait.php' );
-
-// Style Traits
-	require_once( __DIR__ . '/inc/trait/style-trait/typo-style-trait.php' );
-	require_once( __DIR__ . '/inc/trait/style-trait/button-style-trait.php' );
-	require_once( __DIR__ . '/inc/trait/style-trait/icon-style-trait.php' );
-	// require_once( __DIR__ . '/inc/trait/style-trait/vector-style-trait.php' );
-
-function register_hello_world_widget( $widgets_manager ) {
-
 	
+require_once( __DIR__ . '/inc/trait/style-trait/typo-style-trait.php' );
+require_once( __DIR__ . '/inc/trait/style-trait/button-style-trait.php' );
+require_once( __DIR__ . '/inc/trait/style-trait/icon-style-trait.php' );
+
+
+
+// ==================== Register Elementor Widgets ====================
+
+function register_mindu_widget( $widgets_manager ) {
+
+	// Load Widgets Files
 	require_once( __DIR__ . '/widgets/header-search.php' );
 	require_once( __DIR__ . '/widgets/header-menu.php' );
 	require_once( __DIR__ . '/widgets/header-offcanvas.php' );
@@ -39,26 +56,19 @@ function register_hello_world_widget( $widgets_manager ) {
 	require_once( __DIR__ . '/widgets/hero.php' );
 	require_once( __DIR__ . '/widgets/icon-box.php' );
 	require_once( __DIR__ . '/widgets/image-box.php' );
+	require_once( __DIR__ . '/widgets/image-flip.php' );
 	require_once( __DIR__ . '/widgets/brand.php' );
 	require_once( __DIR__ . '/widgets/button.php' );
 	require_once( __DIR__ . '/widgets/team.php' );
+	require_once( __DIR__ . '/widgets/team-slider.php' );
 	require_once( __DIR__ . '/widgets/testimonial.php' );
 	require_once( __DIR__ . '/widgets/faq.php' );
 	require_once( __DIR__ . '/widgets/video.php' );
 	require_once( __DIR__ . '/widgets/icon.php' );
-	
-
-	
-	$widgets_manager->register( new \Mindu_Heading() );
-	$widgets_manager->register( new \Mindu_Icon_Box() );
-	
-	$widgets_manager->register( new \Mindu_Team() );
-	$widgets_manager->register( new \Mindu_Testimonial());
-	
-	
-
+	require_once( __DIR__ . '/widgets/blog-post.php' );
 }
-add_action( 'elementor/widgets/register', 'register_hello_world_widget' );
+
+add_action( 'elementor/widgets/register', 'register_mindu_widget' );
 
 
 

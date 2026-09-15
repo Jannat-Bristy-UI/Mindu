@@ -162,3 +162,6 @@ class Mindu_Heading extends \Elementor\Widget_Base {
 	}
 
 }
+
+/** @var \Elementor\Widgets_Manager $widgets_manager */
+$widgets_manager->register( new Mindu_Heading() );

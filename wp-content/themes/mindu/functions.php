@@ -119,6 +119,12 @@ Mindu Required files for theme ('include_once' is used to include a PHP file onc
 
 require_once('include/theme-helper.php');
 require_once('include/nav-walker.php');
+require_once('include/breadcrumb.php');
+
+// Mindu Required files for plugin (Tutor LMS) - Check if the plugin is active before including the file
+if ( function_exists( 'tutor_lms' ) ) {
+	require_once( 'include/mindu-tutor.php' );
+}
 
 function redux_option () {
 	if (class_exists( 'Redux' ) ) {

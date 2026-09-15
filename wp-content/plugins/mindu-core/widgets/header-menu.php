@@ -1,4 +1,6 @@
+
 <?php
+
 class Mindu_Header_Menu extends \Elementor\Widget_Base {
 
 	public function get_name(): string {
@@ -48,15 +50,18 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 
 
 	//================== content tab =====================
+
 	protected function register_controls_section(){
+
 		$this->start_controls_section(
 			'section_menu',
 			[
 				'label' => esc_html__( 'Main Menu', 'elementor-addon' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
+		// Select Menu
 		$this->add_control(
 			'menu',
 			[
@@ -67,39 +72,75 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Layout Control
+		$this->add_control(
+			'layout',
+			[
+				'label'   => esc_html__( 'Layout', 'elementor-addon' ),
+				'type'    => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'vertical' => [
+						'title' => esc_html__( 'Vertical / List', 'elementor-addon' ),
+						'icon'  => 'eicon-editor-list-ul',
+					],
+					'horizontal' => [
+						'title' => esc_html__( 'Horizontal / Inline', 'elementor-addon' ),
+						'icon'  => 'eicon-ellipsis-h',
+					],
+				],
+				'default' => 'horizontal',
+				'toggle'  => false,
+				'selectors' => [
+
+					// Horizontal / Inline
+					'{{WRAPPER}} .el-menu-layout-horizontal ul.tp-menu-el' => 'display: flex !important; flex-direction: row !important; flex-wrap: wrap !important;',
+
+					'{{WRAPPER}} .el-menu-layout-horizontal ul.tp-menu-el > li' => 'display: block !important;',
+
+					// Vertical / List
+					'{{WRAPPER}} .el-menu-layout-vertical ul.tp-menu-el' => 'display: flex !important; flex-direction: column !important; align-items: flex-start !important;',
+
+					'{{WRAPPER}} .el-menu-layout-vertical ul.tp-menu-el > li' => 'display: block !important; width: 100% !important;',
+				],
+			]
+		);
 
 		// Alignment
-        $this->add_control(
-        	'text_align',
-            [
-                'label' => esc_html__( 'Alignment', 'textdomain' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
+		$this->add_control(
+			'text_align',
+			[
+				'label'   => esc_html__( 'Alignment', 'textdomain' ),
+				'type'    => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'textdomain' ),
-						'icon' => 'eicon-text-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'textdomain' ),
-						'icon' => 'eicon-text-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'textdomain' ),
-						'icon' => 'eicon-text-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
-                ],
-                'default' => 'right',
-                'toggle' => true,
-                'selectors' => [
-                    '{{WRAPPER}} .el-menu' => 'text-align: {{VALUE}};',
-                ],
-            ]
-        );
+				],
+				'default' => 'right',
+				'toggle'  => true,
+				'selectors' => [
+					'{{WRAPPER}} .el-menu' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 
 		$this->end_controls_section();
+
 	}
 
+
+
 	//===================== style tab =============================
+
 	protected function register_style_section() {
 
 		$this->start_controls_section(
@@ -143,6 +184,7 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 
 			$this->end_controls_tab();
 
+
 			// Hover
 			$this->start_controls_tab(
 				'menu_item_hover',
@@ -165,6 +207,7 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 
 			$this->end_controls_tab();
 
+
 			// Active
 			$this->start_controls_tab(
 				'menu_item_active',
@@ -173,25 +216,23 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 				]
 			);
 
-		// End tab
+			$this->add_control(
+				'menu_item_active_color',
+				[
+					'label' => esc_html__( 'Active Color', 'elementor-addon' ),
+					'type'  => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .tp-main-menu ul li.current-menu-item > a'     => 'color: {{VALUE}};',
+						'{{WRAPPER}} .tp-main-menu ul li.current_page_item > a'     => 'color: {{VALUE}};',
+						'{{WRAPPER}} .tp-main-menu ul li.current-menu-ancestor > a' => 'color: {{VALUE}};',
+					],
+				]
+			);
 
-
-		$this->add_control(
-			'menu_item_active_color',
-			[
-				'label' => esc_html__( 'Active Color', 'elementor-addon' ),
-				'type'  => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .tp-main-menu ul li.current-menu-item > a'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tp-main-menu ul li.current_page_item > a'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tp-main-menu ul li.current-menu-ancestor > a' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
+			$this->end_controls_tab();
 
 		$this->end_controls_tabs();
+
 
 		// Padding
 		$this->add_responsive_control(
@@ -206,13 +247,15 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 			]
 		);
 
+
 		// Item Gap
 		$this->add_responsive_control(
 			'menu_gap',
 			[
-				'label' => 'Item Gap',
+				'label' => esc_html__( 'Item Gap', 'elementor-addon' ),
 				'type'  => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
+
 				'range' => [
 					'px' => [
 						'min' => 0,
@@ -226,45 +269,68 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 				],
 
 				'selectors' => [
-					'{{WRAPPER}} .tp-main-menu nav ul li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}} !important;',
+
+					// Reset UL
+					'{{WRAPPER}} .tp-main-menu nav ul.tp-menu-el' => 'margin: 0 !important; padding: 0 !important;',
+
+					// Reset LI
+					'{{WRAPPER}} .tp-main-menu nav ul.tp-menu-el > li' => 'margin: 0 !important; padding: 0 !important;',
+
+					// Reset submenu spacing
+					'{{WRAPPER}} .tp-main-menu nav ul.tp-menu-el > li > ul' => 'margin: 0 !important;',
+
+					// Horizontal gap
+					'{{WRAPPER}} .el-menu-layout-horizontal .tp-main-menu nav ul.tp-menu-el > li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}} !important;',
+
+					// Vertical gap
+					'{{WRAPPER}} .el-menu-layout-vertical .tp-main-menu nav ul.tp-menu-el > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
 				],
 			]
 		);
 
+
 		$this->end_controls_section();
+
 	}
 
 
 
-	// Render the HTML markup for the header menu widget.
+	//===================== Render =============================
+
 	protected function render(): void {
+
 		$settings = $this->get_settings_for_display();
 
-		if (empty($settings['menu']) ) {
-			return; 
+		if ( empty( $settings['menu'] ) ) {
+			return;
 		}
+
+		$layout = ! empty( $settings['layout'] ) ? $settings['layout'] : 'horizontal';
 
 		?>
 
-		<div class="tp-header-left el-menu">
+		<div class="tp-header-left el-menu el-menu-layout-<?php echo esc_attr( $layout ); ?>">
 			<div class="tp-main-menu tp-main-menu-2 tp-menu-dropdown">
 				<nav class="tp-mobile-menu-active">
-					<?php 	
+					<?php
 						wp_nav_menu( [
-							'menu'       	=> (int) $settings['menu'],
-							'menu_class' 	=> 'tp-menu-el',
-							'container'  	=> '',
-							'fallback_cb' 	=> 'Mindu_Walker_Nav_Menu ::fallback',
-							'walker' 		=> new Mindu_Walker_Nav_Menu, 
-						] );	
+							'menu'        => (int) $settings['menu'],
+							'menu_class'  => 'tp-menu-el',
+							'container'   => '',
+							'fallback_cb' => 'Mindu_Walker_Nav_Menu::fallback',
+							'walker'      => new Mindu_Walker_Nav_Menu,
+						] );
 					?>
 				</nav>
 			</div>
 		</div>
-            
+
 		<?php
 	}
+
 }
+
 
 /** @var \Elementor\Widgets_Manager $widgets_manager */
 $widgets_manager->register( new Mindu_Header_Menu() );
+

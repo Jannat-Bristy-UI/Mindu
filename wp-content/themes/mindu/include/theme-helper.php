@@ -1,32 +1,41 @@
 <?php
 
-//============ Display the site Header (For Elementor) ================ 
 
-    //Note- Loads the selected Elementor Header or show the default theme Header.
+//============ By Elementor -> Render Site Header & Footer ================ 
+    /**
+     * Source:
+     * - tpmeta_field() → Pure Metafields Plugin
+     * - Elementor\Plugin → Elementor
+     * - get_template_part() → WordPress Core
+    */
+
+    // Function to display the site header.
     function mindu_header(){
-
         $tp_page_header = function_exists('tpmeta_field') ? tpmeta_field('tp_page_header') : '';
         
+        // "Header যদি Object হিসেবে আসে, তাহলে Object-এর ভিতর থেকে ID নাও। আর যদি সরাসরি ID আসে, তাহলে সেটাকে integer বানিয়ে নাও।"
         $header_id = is_object($tp_page_header) ? $tp_page_header->ID : (int) $tp_page_header;
 
+        // চেক করা হচ্ছে Elementor Plugin Active আছে কিনা এবং Header ID সঠিক আছে কিনা।
+        // দুটোই ঠিক থাকলে Elementor Header দেখানো হবে, না হলে Theme-এর Default Header দেখানো হবে।     
         if ( class_exists( '\Elementor\Plugin' ) && $header_id ) {
             echo \Elementor\Plugin::$instance->frontend->get_builder_content( $header_id, true );
         } else {
             get_template_part( 'template-parts/header/header-1' );
-        }   
+        } 
+
     }
 
-//================ End Function =========================
+    // mindu_before_header hook চালু হলে mindu_header() function-টি চালানো হবে। 
+    add_action('mindu_before_header', 'mindu_header');
 
 
-//============ Display the site Footer (For Elementor) ================ 
-
-    //Note- Loads the selected Elementor Header or show the default theme Header.
+    // Function to display the site footer.
     function mindu_footer(){
 
-        $tp_footer_page = function_exists('tpmeta_field') ? tpmeta_field('tp_footer_page') : '';
+        $tp_page_footer = function_exists('tpmeta_field') ? tpmeta_field('tp_page_footer') : '';
         
-        $footer_id = is_object($tp_footer_page) ? $tp_footer_page->ID : (int) $tp_footer_page;
+        $footer_id = is_object($tp_page_footer) ? $tp_page_footer->ID : (int) $tp_page_footer;
 
         if ( class_exists( '\Elementor\Plugin' ) && $footer_id ) {
             echo \Elementor\Plugin::$instance->frontend->get_builder_content( $footer_id, true );
@@ -35,40 +44,45 @@
         }   
     }
 
-//================ End Function =========================
+// Function End -----
 
 
-// Display dynamic header logo using Customizer variables
-function header_logo() {
-    
-    global $mindu;
-    $header_logo = $mindu['header-logo']['url'] ?? get_template_directory_uri(). '/assets/img/logo/logo.png'; // Fallback to default logo if not set
-    ?>
 
-    <a href="<?php echo home_url(); ?>">
-        <img width="85" src="<?php echo esc_url($header_logo); ?>" alt="<?php echo get_bloginfo(); ?>">
-    </a>
+//============ Customizer → Render global Header Logo  ====================
 
-    <?php
-}
+    // Main Header Logo Dynamic function
+    function header_logo() {
+        
+        global $mindu;
+        $header_logo = $mindu['header-logo']['url'] ?? get_template_directory_uri(). '/assets/img/logo/logo.png'; // Fallback to default logo if not set
+        ?>
 
+        <a href="<?php echo home_url(); ?>">
+            <img width="85" src="<?php echo esc_url($header_logo); ?>" alt="<?php echo get_bloginfo(); ?>">
+        </a>
 
-// Display dynamic header logo using Customizer variables
-function header_transparent_logo() {
-    
-    global $mindu;
-    $header_logo = $mindu['header-logo']['url'] ?? get_template_directory_uri(). '/assets/img/logo/logo.png'; // Fallback to default logo if not set
-    $header_logo_white = $mindu['header-logo-white']['url'] ?? get_template_directory_uri(). '/assets/img/logo/logo-white.png'; // Fallback to default white logo if not set
-    ?>
-
-    <a href="<?php echo home_url(); ?>">
-        <img class="logo-1" width="85" src="<?php echo esc_url($header_logo_white); ?>" alt="<?php echo get_bloginfo(); ?>">
-        <img class="logo-2 d-none" width="85" src="<?php echo esc_url($header_logo); ?>" alt="<?php echo get_bloginfo(); ?>">
-    </a>
+        <?php
+    }
 
 
-    <?php
-}
+    //Transparent Header Logo Dynamic function
+    function header_transparent_logo() {
+        
+        global $mindu;
+        $header_logo = $mindu['header-logo']['url'] ?? get_template_directory_uri(). '/assets/img/logo/logo.png'; // Fallback to default logo if not set
+        $header_logo_white = $mindu['header-logo-white']['url'] ?? get_template_directory_uri(). '/assets/img/logo/logo-white.png'; // Fallback to default white logo if not set
+        ?>
+
+        <a href="<?php echo home_url(); ?>">
+            <img class="logo-1" width="85" src="<?php echo esc_url($header_logo_white); ?>" alt="<?php echo get_bloginfo(); ?>">
+            <img class="logo-2 d-none" width="85" src="<?php echo esc_url($header_logo); ?>" alt="<?php echo get_bloginfo(); ?>">
+        </a>
+
+
+        <?php
+    }
+
+// Function End -----
 
 
 // Function to display dynamic footer copyright using Customizer variables

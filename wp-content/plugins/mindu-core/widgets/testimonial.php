@@ -223,3 +223,7 @@ class Mindu_Testimonial extends \Elementor\Widget_Base {
 
 }
 
+/** @var \Elementor\Widgets_Manager $widgets_manager */
+$widgets_manager->register( new Mindu_Testimonial() );
+
+

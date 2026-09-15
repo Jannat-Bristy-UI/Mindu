@@ -1,0 +1,186 @@
+/**
+ * TP Animation — Elementor entrance animations (pure CSS + IntersectionObserver).
+ *
+ * How it works
+ * ------------
+ * - The JS driver synchronously adds .tp-anim-ready to <html> before the body
+ *   renders. Every hidden/initial state below is gated behind that class, so
+ *   with JS disabled (or IntersectionObserver unsupported) elements are never
+ *   hidden at all.
+ * - Per-element Delay / Duration / Distance arrive as CSS custom properties
+ *   set by the driver from data-tp-* attributes; the values here are the
+ *   defaults.
+ * - .tp-animation-in  = element has entered the viewport (animated state).
+ * - .tp-anim-done     = one-shot animation finished; releases will-change.
+ * - .tp-anim-clip     = set on <html> by the driver only when a horizontal
+ *   animation exists on the page. overflow-x: clip (unlike overflow hidden)
+ *   just clips paint without creating a scroll container, so the pre-animation
+ *   sideways offsets can never produce a horizontal scrollbar.
+ */
+
+/* ---------------------------------------------------------------- base */
+
+html.tp-anim-ready.tp-anim-clip {
+	overflow-x: clip;
+}
+
+html.tp-anim-ready .tp-animation {
+	--tp-distance: 20px;
+	--tp-duration: .8s;
+	--tp-delay: 0s;
+	/* transform: long settle with a soft landing (no bounce) */
+	--tp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	/* opacity/filter: gentle ease-out that resolves slightly ahead of the
+	   movement — the element is fully solid while it glides the last few
+	   pixels into place, which is what makes the motion read as premium */
+	--tp-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+
+	opacity: 0;
+	will-change: opacity, transform;
+	backface-visibility: hidden;
+	transition:
+		opacity calc(var(--tp-duration) * 0.85) var(--tp-ease-soft) var(--tp-delay),
+		transform var(--tp-duration) var(--tp-ease) var(--tp-delay),
+		filter calc(var(--tp-duration) * 0.9) var(--tp-ease-soft) var(--tp-delay),
+		clip-path var(--tp-duration) var(--tp-ease) var(--tp-delay);
+}
+
+/* ---------------------------------------------------------------- initial states */
+
+/* Fade — opacity only (the base already sets opacity: 0). */
+
+html.tp-anim-ready .tp-fade-up {
+	transform: translate3d(0, var(--tp-distance), 0);
+}
+
+html.tp-anim-ready .tp-fade-down {
+	transform: translate3d(0, calc(var(--tp-distance) * -1), 0);
+}
+
+html.tp-anim-ready .tp-fade-left {
+	transform: translate3d(calc(var(--tp-distance) * -1), 0, 0);
+}
+
+html.tp-anim-ready .tp-fade-right {
+	transform: translate3d(var(--tp-distance), 0, 0);
+}
+
+/* Zoom — deliberately subtle scaling. */
+
+html.tp-anim-ready .tp-zoom-in {
+	transform: scale(0.96);
+}
+
+html.tp-anim-ready .tp-zoom-out {
+	transform: scale(1.04);
+}
+
+/* Slide — slightly stronger travel than fade (30px default). */
+
+html.tp-anim-ready .tp-slide-up,
+html.tp-anim-ready .tp-slide-left,
+html.tp-anim-ready .tp-slide-right {
+	--tp-distance: 30px;
+}
+
+html.tp-anim-ready .tp-slide-up {
+	transform: translate3d(0, var(--tp-distance), 0);
+}
+
+html.tp-anim-ready .tp-slide-left {
+	transform: translate3d(var(--tp-distance), 0, 0);
+}
+
+html.tp-anim-ready .tp-slide-right {
+	transform: translate3d(calc(var(--tp-distance) * -1), 0, 0);
+}
+
+/* Blur — soft-focus entrance with a small lift. */
+
+html.tp-anim-ready .tp-blur {
+	filter: blur(6px);
+	transform: translate3d(0, 10px, 0);
+	will-change: opacity, transform, filter;
+}
+
+/* Reveal Up — the element is wiped in from the bottom edge upward while
+   rising slightly. clip-path does the hiding, so opacity stays 1: on the
+   rare browser without clip-path support the element simply stays visible. */
+
+html.tp-anim-ready .tp-reveal-up {
+	opacity: 1;
+	clip-path: inset(100% 0 0 0);
+	transform: translate3d(0, calc(var(--tp-distance) * 0.6), 0);
+	will-change: transform, clip-path;
+}
+
+/* ---------------------------------------------------------------- animated state */
+
+html.tp-anim-ready .tp-animation.tp-animation-in {
+	opacity: 1;
+	transform: none;
+	filter: none;
+}
+
+/* Only Reveal Up animates clip-path. Scoped here so the other animations
+   never carry a clip: inset(0 0 0 0) clips at the border box, which would
+   permanently crop shadows and children overflowing the section. */
+html.tp-anim-ready .tp-reveal-up.tp-animation-in {
+	clip-path: inset(0 0 0 0);
+}
+
+/* One-shot animation finished — stop reserving compositor resources. */
+html.tp-anim-ready .tp-animation.tp-anim-done {
+	will-change: auto;
+}
+
+/* Reveal finished — drop the clip entirely so content that overflows the
+   element's box (shadows, decorative children) is no longer cropped. */
+html.tp-anim-ready .tp-reveal-up.tp-anim-done {
+	clip-path: none;
+}
+
+/* ---------------------------------------------------------------- mobile opt-out */
+
+/* Elements with Mobile Animation disabled appear immediately below the
+   mobile breakpoint (Elementor default: 767px) — no hiding, no movement,
+   no transition. The JS still observes them, which keeps them animating
+   normally if the viewport grows past the breakpoint (device rotation,
+   window resize). */
+@media (max-width: 767px) {
+	html.tp-anim-ready .tp-animation.tp-anim-mobile-off {
+		opacity: 1 !important;
+		transform: none !important;
+		filter: none !important;
+		clip-path: none !important;
+		transition: none !important;
+		will-change: auto !important;
+	}
+}
+
+/* ---------------------------------------------------------------- Elementor editor */
+
+/* The editor/preview must stay fully usable: never hide, move, or blur
+   elements while editing. The driver also skips observing in the editor. */
+body.elementor-editor-active .tp-animation,
+body.elementor-edit-mode .tp-animation {
+	opacity: 1 !important;
+	transform: none !important;
+	filter: none !important;
+	clip-path: none !important;
+	transition: none !important;
+	will-change: auto !important;
+}
+
+/* ---------------------------------------------------------------- accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+	html.tp-anim-ready .tp-animation {
+		opacity: 1 !important;
+		transform: none !important;
+		filter: none !important;
+		clip-path: none !important;
+		transition: none !important;
+		will-change: auto !important;
+	}
+}
