@@ -68,3 +68,82 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
 }
 
 
+
+
+/**
+ * Custom Elementor Icon List Styles
+ * ------------------------------------------------------------------
+ * 1. Reset & Alignment: Theme-safe flex structure with zero margins/paddings.
+ * 2. Strict Bullet Removal: Hides all list bullets, markers, and theme pseudo-elements.
+ * 3. Element Centering: Aligns icons (Font/SVG) and text properly.
+ * 4. Sync Hover State: Triggers smooth color transitions for both icon and text simultaneously when hovering anywhere on the item/link.
+*/
+
+/* Clean Base Structure & Flex Layout */
+.el-icon-list,
+ul.el-icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Item Wrapper */
+.el-icon-list-item,
+ul.el-icon-list li.el-icon-list-item {
+    display: inline-flex;
+    align-items: center;
+    list-style: none !important;
+    list-style-type: none !important;
+}
+
+/* Remove default bullets */
+.el-icon-list-item::before,
+.el-icon-list-item::after,
+.el-icon-list-item::marker {
+    content: none !important;
+    display: none !important;
+}
+
+/* Link & Content Alignment */
+.el-icon-list-item a,
+.el-icon-list-content {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+/* Icon Centering & Sizing Fix */
+.el-icon-list-item .el-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1;
+}
+
+.el-icon-list-item .el-icon i,
+.el-icon-list-item .el-icon span {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.el-icon-list-item .el-icon svg {
+    display: block;
+    margin: auto;
+    width: 1em;
+    height: 1em;
+}
+
+/* Smooth Hover Transition for both Text and Icon */
+.el-icon-list-item .el-icon-list-text,
+.el-icon-list-item .el-icon,
+.el-icon-list-item .el-icon i,
+.el-icon-list-item .el-icon svg,
+.el-icon-list-item .el-icon svg * {
+    transition: color 0.3s ease, fill 0.3s ease, stroke 0.3s ease !important;
+}

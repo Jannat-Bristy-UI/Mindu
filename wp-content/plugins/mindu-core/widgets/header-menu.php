@@ -1,4 +1,3 @@
-
 <?php
 
 class Mindu_Header_Menu extends \Elementor\Widget_Base {
@@ -31,11 +30,10 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 	}
 
 
-
-	// Get_Nav_menus (Get all available navigation menus)
+	// Get all available navigation menus
 	private function get_nav_menus() {
 
-		$menus = wp_get_nav_menus();
+		$menus   = wp_get_nav_menus();
 		$options = [];
 
 		if ( ! empty( $menus ) ) {
@@ -48,10 +46,9 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 	}
 
 
+	//================== Content Tab =====================
 
-	//================== content tab =====================
-
-	protected function register_controls_section(){
+	protected function register_controls_section() {
 
 		$this->start_controls_section(
 			'section_menu',
@@ -109,19 +106,19 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 		$this->add_control(
 			'text_align',
 			[
-				'label'   => esc_html__( 'Alignment', 'textdomain' ),
+				'label'   => esc_html__( 'Alignment', 'elementor-addon' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'textdomain' ),
+						'title' => esc_html__( 'Left', 'elementor-addon' ),
 						'icon'  => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'textdomain' ),
+						'title' => esc_html__( 'Center', 'elementor-addon' ),
 						'icon'  => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'textdomain' ),
+						'title' => esc_html__( 'Right', 'elementor-addon' ),
 						'icon'  => 'eicon-text-align-right',
 					],
 				],
@@ -138,8 +135,7 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 	}
 
 
-
-	//===================== style tab =============================
+	//===================== Style Tab =============================
 
 	protected function register_style_section() {
 
@@ -151,98 +147,94 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 			]
 		);
 
-		// Typography
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name'     => 'menu_item_typography',
-				'selector' => '{{WRAPPER}} .tp-main-menu ul li > a',
+				'name'     => 'menu_typography',
+				'selector' => '{{WRAPPER}} .tp-menu-el > li a',
 			]
 		);
 
-		// Tabs
+
 		$this->start_controls_tabs( 'menu_item_tabs' );
 
-			// Normal
-			$this->start_controls_tab(
-				'menu_item_normal',
-				[
-					'label' => esc_html__( 'Normal', 'elementor-addon' ),
-				]
-			);
+		// Normal
+		$this->start_controls_tab(
+			'menu_item_normal',
+			[
+				'label' => esc_html__( 'Normal', 'elementor-addon' ),
+			]
+		);
 
-			$this->add_control(
-				'menu_item_color',
-				[
-					'label' => esc_html__( 'Color', 'elementor-addon' ),
-					'type'  => \Elementor\Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} .tp-main-menu ul li > a' => 'color: {{VALUE}};',
-					],
-				]
-			);
+		$this->add_control(
+			'menu_color',
+			[
+				'label' => esc_html__( 'Text Color', 'elementor-addon' ),
+				'type'  => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tp-menu-el > li > a' => 'color: {{VALUE}};',
+				],
+			]
+		);
 
-			$this->end_controls_tab();
-
-
-			// Hover
-			$this->start_controls_tab(
-				'menu_item_hover',
-				[
-					'label' => esc_html__( 'Hover', 'elementor-addon' ),
-				]
-			);
-
-			$this->add_control(
-				'menu_item_hover_color',
-				[
-					'label' => esc_html__( 'Hover Color', 'elementor-addon' ),
-					'type'  => \Elementor\Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} .tp-main-menu ul li:hover > a' => 'color: {{VALUE}};',
-						'{{WRAPPER}} .tp-main-menu ul li > a:hover' => 'color: {{VALUE}};',
-					],
-				]
-			);
-
-			$this->end_controls_tab();
+		$this->end_controls_tab();
 
 
-			// Active
-			$this->start_controls_tab(
-				'menu_item_active',
-				[
-					'label' => esc_html__( 'Active', 'elementor-addon' ),
-				]
-			);
+		// Hover
+		$this->start_controls_tab(
+			'menu_item_hover',
+			[
+				'label' => esc_html__( 'Hover', 'elementor-addon' ),
+			]
+		);
 
-			$this->add_control(
-				'menu_item_active_color',
-				[
-					'label' => esc_html__( 'Active Color', 'elementor-addon' ),
-					'type'  => \Elementor\Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} .tp-main-menu ul li.current-menu-item > a'     => 'color: {{VALUE}};',
-						'{{WRAPPER}} .tp-main-menu ul li.current_page_item > a'     => 'color: {{VALUE}};',
-						'{{WRAPPER}} .tp-main-menu ul li.current-menu-ancestor > a' => 'color: {{VALUE}};',
-					],
-				]
-			);
+		$this->add_control(
+			'menu_hover_color',
+			[
+				'label' => esc_html__( 'Hover Color', 'elementor-addon' ),
+				'type'  => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tp-menu-el > li > a:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
 
-			$this->end_controls_tab();
+		$this->end_controls_tab();
+
+
+		// Active
+		$this->start_controls_tab(
+			'menu_item_active',
+			[
+				'label' => esc_html__( 'Active', 'elementor-addon' ),
+			]
+		);
+
+		$this->add_control(
+			'menu_active_color',
+			[
+				'label' => esc_html__( 'Active Color', 'elementor-addon' ),
+				'type'  => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tp-menu-el > li.current-menu-item > a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
 
 
 		// Padding
 		$this->add_responsive_control(
-			'menu_item_padding',
+			'menu_padding',
 			[
-				'label' => esc_html__( 'Padding', 'elementor-addon' ),
-				'type'  => \Elementor\Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Padding', 'elementor-addon' ),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
-				'selectors' => [
-					'{{WRAPPER}} .tp-main-menu ul li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'selectors'  => [
+					'{{WRAPPER}} .tp-menu-el > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -254,45 +246,21 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 			[
 				'label' => esc_html__( 'Item Gap', 'elementor-addon' ),
 				'type'  => \Elementor\Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-
 				'range' => [
 					'px' => [
 						'min' => 0,
 						'max' => 100,
 					],
 				],
-
-				'default' => [
-					'unit' => 'px',
-					'size' => 35,
-				],
-
 				'selectors' => [
-
-					// Reset UL
-					'{{WRAPPER}} .tp-main-menu nav ul.tp-menu-el' => 'margin: 0 !important; padding: 0 !important;',
-
-					// Reset LI
-					'{{WRAPPER}} .tp-main-menu nav ul.tp-menu-el > li' => 'margin: 0 !important; padding: 0 !important;',
-
-					// Reset submenu spacing
-					'{{WRAPPER}} .tp-main-menu nav ul.tp-menu-el > li > ul' => 'margin: 0 !important;',
-
-					// Horizontal gap
-					'{{WRAPPER}} .el-menu-layout-horizontal .tp-main-menu nav ul.tp-menu-el > li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}} !important;',
-
-					// Vertical gap
-					'{{WRAPPER}} .el-menu-layout-vertical .tp-main-menu nav ul.tp-menu-el > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .tp-menu-el > li' => 'margin: 0 {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
-
 		$this->end_controls_section();
 
 	}
-
 
 
 	//===================== Render =============================
@@ -305,24 +273,34 @@ class Mindu_Header_Menu extends \Elementor\Widget_Base {
 			return;
 		}
 
-		$layout = ! empty( $settings['layout'] ) ? $settings['layout'] : 'horizontal';
+		$layout = ! empty( $settings['layout'] )
+			? $settings['layout']
+			: 'horizontal';
 
 		?>
 
 		<div class="tp-header-left el-menu el-menu-layout-<?php echo esc_attr( $layout ); ?>">
+
 			<div class="tp-main-menu tp-main-menu-2 tp-menu-dropdown">
+
 				<nav class="tp-mobile-menu-active">
+
 					<?php
-						wp_nav_menu( [
+					wp_nav_menu(
+						[
 							'menu'        => (int) $settings['menu'],
 							'menu_class'  => 'tp-menu-el',
 							'container'   => '',
 							'fallback_cb' => 'Mindu_Walker_Nav_Menu::fallback',
 							'walker'      => new Mindu_Walker_Nav_Menu,
-						] );
+						]
+					);
 					?>
+
 				</nav>
+
 			</div>
+
 		</div>
 
 		<?php

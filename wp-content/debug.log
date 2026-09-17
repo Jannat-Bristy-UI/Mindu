@@ -707,3 +707,135 @@ Stack trace:
 [15-Sep-2026 03:33:29 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
 [15-Sep-2026 03:33:29 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
 [15-Sep-2026 03:33:29 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:08:00 UTC] PHP Parse error:  syntax error, unexpected token "protected", expecting end of file in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\header-menu.php on line 279
+[15-Sep-2026 04:13:21 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:13:21 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:13:21 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:13:21 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:13:44 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:13:44 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:13:44 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:13:44 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:14:23 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:14:23 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:14:23 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:14:23 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:14:50 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:14:50 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:14:50 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:14:50 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:35:28 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:35:28 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:35:28 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:35:28 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:38:22 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:38:22 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 04:38:22 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 04:38:22 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 05:08:39 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 05:08:39 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 05:08:39 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 05:08:39 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 05:09:04 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 05:09:04 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 05:09:04 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 05:09:04 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 05:10:15 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 05:10:15 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 05:10:15 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 05:10:15 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 05:23:05 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:05 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:05 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:05 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:06 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:09 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:13 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:16 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:18 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:19 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:20 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:20 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:21 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:26 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:26 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:26 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:27 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:27 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:28 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:30 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:30 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:34 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:36 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:37 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:23:52 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting "]" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\inc\trait\style-trait\icon-style-trait.php on line 21
+[15-Sep-2026 05:48:54 UTC] PHP Fatal error:  Out of memory (allocated 81788928) (tried to allocate 32768 bytes) in C:\laragon\www\mindu\wp-content\plugins\elementor\modules\floating-buttons\base\widget-contact-button-base.php on line 2085
+[15-Sep-2026 05:50:29 UTC] Automatic updates starting...
+[15-Sep-2026 05:50:30 UTC]   Automatic plugin updates starting...
+[15-Sep-2026 05:50:30 UTC]   Automatic plugin updates complete.
+[15-Sep-2026 05:50:31 UTC]   Automatic theme updates starting...
+[15-Sep-2026 05:50:31 UTC]   Automatic theme updates complete.
+[15-Sep-2026 05:50:31 UTC] Automatic updates complete.
+[15-Sep-2026 06:02:05 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 06:02:05 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 06:02:05 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 06:02:05 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 12:01:23 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 12:01:23 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 12:01:23 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 12:01:23 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 12:07:43 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 12:07:43 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 12:07:43 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 12:07:43 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 12:41:08 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 12:41:08 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[15-Sep-2026 12:41:08 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[15-Sep-2026 12:41:08 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[16-Sep-2026 03:23:13 UTC] Automatic updates starting...
+[16-Sep-2026 03:23:14 UTC]   Automatic plugin updates starting...
+[16-Sep-2026 03:23:14 UTC]   Automatic plugin updates complete.
+[16-Sep-2026 03:23:15 UTC]   Automatic theme updates starting...
+[16-Sep-2026 03:23:15 UTC]   Automatic theme updates complete.
+[16-Sep-2026 03:23:15 UTC] Automatic updates complete.
+[16-Sep-2026 03:23:37 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[16-Sep-2026 03:23:37 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[16-Sep-2026 03:23:37 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[16-Sep-2026 03:23:37 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[16-Sep-2026 05:50:33 UTC] Automatic updates starting...
+[16-Sep-2026 05:50:34 UTC]   Automatic plugin updates starting...
+[16-Sep-2026 05:50:34 UTC]   Automatic plugin updates complete.
+[16-Sep-2026 05:50:34 UTC]   Automatic theme updates starting...
+[16-Sep-2026 05:50:34 UTC]   Automatic theme updates complete.
+[16-Sep-2026 05:50:34 UTC] Automatic updates complete.
+[16-Sep-2026 09:58:43 UTC] PHP Notice:  Function WP_Scripts::localize was called <strong>incorrectly</strong>. The <code>$l10n</code> parameter must be an array. To pass arbitrary data to scripts, use the <code>wp_add_inline_script()</code> function instead. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 5.7.0.) in C:\laragon\www\mindu\wp-includes\functions.php on line 6260
+[17-Sep-2026 03:26:31 UTC] Automatic updates starting...
+[17-Sep-2026 03:26:32 UTC]   Automatic plugin updates starting...
+[17-Sep-2026 03:26:32 UTC]   Automatic plugin updates complete.
+[17-Sep-2026 03:26:33 UTC]   Automatic theme updates starting...
+[17-Sep-2026 03:26:33 UTC]   Automatic theme updates complete.
+[17-Sep-2026 03:26:33 UTC] Automatic updates complete.
+[17-Sep-2026 04:27:08 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[17-Sep-2026 04:27:08 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[17-Sep-2026 04:27:08 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[17-Sep-2026 04:27:08 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[17-Sep-2026 04:27:17 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[17-Sep-2026 04:27:17 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[17-Sep-2026 04:27:17 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[17-Sep-2026 04:27:17 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[17-Sep-2026 04:27:37 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[17-Sep-2026 04:27:37 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[17-Sep-2026 04:27:37 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[17-Sep-2026 04:27:37 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[17-Sep-2026 05:14:37 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[17-Sep-2026 05:14:37 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[17-Sep-2026 05:14:37 UTC] PHP Warning:  Undefined array key "title_url" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\image-box.php on line 166
+[17-Sep-2026 05:14:37 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\mindu\wp-includes\formatting.php on line 4558
+[17-Sep-2026 05:33:57 UTC] PHP Warning:  Undefined array key "editor_post_id" in C:\laragon\www\mindu\wp-content\plugins\elementor\modules\history\revisions-manager.php on line 363
+[17-Sep-2026 05:51:09 UTC] Automatic updates starting...
+[17-Sep-2026 05:51:10 UTC]   Automatic plugin updates starting...
+[17-Sep-2026 05:51:10 UTC]   Automatic plugin updates complete.
+[17-Sep-2026 05:51:11 UTC]   Automatic theme updates starting...
+[17-Sep-2026 05:51:11 UTC]   Automatic theme updates complete.
+[17-Sep-2026 05:51:11 UTC] Automatic updates complete.
+[17-Sep-2026 07:57:17 UTC] PHP Parse error:  syntax error, unexpected token "`" in C:\laragon\www\mindu\wp-content\plugins\mindu-core\widgets\heading.php on line 390

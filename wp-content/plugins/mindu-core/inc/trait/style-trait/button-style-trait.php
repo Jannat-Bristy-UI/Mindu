@@ -51,21 +51,6 @@ trait Button_Style_Trait {
                 ]
             );
 
-            // Icon Color
-            $this->add_control(
-                $id . '_icon_color',
-                [
-                    'label'   => esc_html__( 'Icon Color', 'elementor-addon' ),
-                    'type'    => \Elementor\Controls_Manager::COLOR,
-                    // 'default' => '#FFFFFF',
-                    'selectors' => [
-                        '{{WRAPPER}} ' . $selector . ' .tp-btn-icon' => 'color: {{VALUE}};',
-                        '{{WRAPPER}} ' . $selector . ' .tp-btn-icon i' => 'color: {{VALUE}};',
-                        '{{WRAPPER}} ' . $selector . ' .tp-btn-icon svg' => 'fill: {{VALUE}};',
-                        '{{WRAPPER}} ' . $selector . ' .tp-btn-icon svg path' => 'fill: {{VALUE}};',
-                    ],
-                ]
-            );
 
             // Background Color
             $this->add_control(
@@ -103,20 +88,6 @@ trait Button_Style_Trait {
                 ]
             );
 
-            // Icon Hover Color
-            $this->add_control(
-                $id . '_hover_icon_color',
-                [
-                    'label' => esc_html__( 'Icon Color', 'elementor-addon' ),
-                    'type'  => \Elementor\Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon' => 'color: {{VALUE}};',
-                        '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon i' => 'color: {{VALUE}};',
-                        '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon svg' => 'fill: {{VALUE}};',
-                        '{{WRAPPER}} ' . $selector . ':hover .tp-btn-icon svg path' => 'fill: {{VALUE}};',
-                    ],
-                ]
-            );
 
             // Background Hover Color
             $this->add_control(

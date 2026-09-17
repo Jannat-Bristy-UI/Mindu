@@ -49,6 +49,7 @@ function register_mindu_widget( $widgets_manager ) {
 
 	// Load Widgets Files
 	require_once( __DIR__ . '/widgets/header-search.php' );
+	require_once( __DIR__ . '/widgets/icon-list.php' );
 	require_once( __DIR__ . '/widgets/header-menu.php' );
 	require_once( __DIR__ . '/widgets/header-offcanvas.php' );
 	require_once( __DIR__ . '/widgets/header-language.php' );

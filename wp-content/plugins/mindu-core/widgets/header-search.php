@@ -2,6 +2,8 @@
 
 class Mindu_Header_Search extends \Elementor\Widget_Base {
 
+	use Icon_Style_Trait;
+
 	public function get_name(): string {
 		return 'mindu-header_search';
 	}
@@ -61,136 +63,7 @@ class Mindu_Header_Search extends \Elementor\Widget_Base {
 	//===================== style tab =============================
 	protected function register_style_section() {
 
-		$this->start_controls_section(
-			'menu_item_style',
-			[
-				'label' => esc_html__( 'Menu Item', 'elementor-addon' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		// Typography
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name'     => 'menu_item_typography',
-				'selector' => '{{WRAPPER}} .tp-main-menu ul li > a',
-			]
-		);
-
-		// Tabs
-		$this->start_controls_tabs( 'menu_item_tabs' );
-
-			// Normal
-			$this->start_controls_tab(
-				'menu_item_normal',
-				[
-					'label' => esc_html__( 'Normal', 'elementor-addon' ),
-				]
-			);
-
-			$this->add_control(
-				'menu_item_color',
-				[
-					'label' => esc_html__( 'Color', 'elementor-addon' ),
-					'type'  => \Elementor\Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} .tp-main-menu ul li > a' => 'color: {{VALUE}};',
-					],
-				]
-			);
-
-			$this->end_controls_tab();
-
-			// Hover
-			$this->start_controls_tab(
-				'menu_item_hover',
-				[
-					'label' => esc_html__( 'Hover', 'elementor-addon' ),
-				]
-			);
-
-			$this->add_control(
-				'menu_item_hover_color',
-				[
-					'label' => esc_html__( 'Hover Color', 'elementor-addon' ),
-					'type'  => \Elementor\Controls_Manager::COLOR,
-					'selectors' => [
-						'{{WRAPPER}} .tp-main-menu ul li:hover > a' => 'color: {{VALUE}};',
-						'{{WRAPPER}} .tp-main-menu ul li > a:hover' => 'color: {{VALUE}};',
-					],
-				]
-			);
-
-			$this->end_controls_tab();
-
-			// Active
-			$this->start_controls_tab(
-				'menu_item_active',
-				[
-					'label' => esc_html__( 'Active', 'elementor-addon' ),
-				]
-			);
-
-		// End tab
-
-
-		$this->add_control(
-			'menu_item_active_color',
-			[
-				'label' => esc_html__( 'Active Color', 'elementor-addon' ),
-				'type'  => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .tp-main-menu ul li.current-menu-item > a'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tp-main-menu ul li.current_page_item > a'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tp-main-menu ul li.current-menu-ancestor > a' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
-		// Padding
-		$this->add_responsive_control(
-			'menu_item_padding',
-			[
-				'label' => esc_html__( 'Padding', 'elementor-addon' ),
-				'type'  => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
-				'selectors' => [
-					'{{WRAPPER}} .tp-main-menu ul li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		// Item Gap
-		$this->add_responsive_control(
-			'menu_gap',
-			[
-				'label' => 'Item Gap',
-				'type'  => \Elementor\Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-
-				'default' => [
-					'unit' => 'px',
-					'size' => 35,
-				],
-
-				'selectors' => [
-					'{{WRAPPER}} .tp-main-menu nav ul li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}} !important;',
-				],
-			]
-		);
-
-		$this->end_controls_section();
+		$this->icon_style_controls('icon','Icon','.el-icon');
 	}
 
 
@@ -203,7 +76,7 @@ class Mindu_Header_Search extends \Elementor\Widget_Base {
 
 
 		<div class="tp-header-2-option">
-			<button class="tp-header-search tp-search-click d-none d-sm-block">
+			<button class="tp-header-search tp-search-click d-none d-sm-block el-icon">
 				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M11.6389 11.6389L14.7499 14.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 					<path d="M13.1941 6.97222C13.1941 3.53578 10.4084 0.75 6.97206 0.75C3.53571 0.75 0.75 3.53578 0.75 6.97222C0.75 10.4087 3.53571 13.1944 6.97206 13.1944C10.4084 13.1944 13.1941 10.4087 13.1941 6.97222Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
