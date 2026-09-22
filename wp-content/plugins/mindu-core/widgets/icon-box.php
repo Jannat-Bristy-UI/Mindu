@@ -60,6 +60,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 				'options' => [
 					'style_01'  => esc_html__( 'Style-01', 'elementor-addon' ),
 					'style_02' => esc_html__( 'Style-02', 'elementor-addon' ),
+					'style_03' => esc_html__( 'Style-03', 'elementor-addon' ),
 				],
 			]
 		);
@@ -468,6 +469,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 
 	
 	protected function render(): void {
+
 		$settings = $this->get_settings_for_display();
 
 		// This is for multiple attribute for button
@@ -479,10 +481,11 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 		?>
 
 
-		<?php if($settings['service_style'] == 'style_02') : ?>
+		
+		<?php if($settings['service_style'] == 'style_02') : ?> 
 
 			
-               
+            <!-- Service Style 02 -->   
 			<div class="tp-service-item tp-service-2-item  el-icon-box">
 
 				<span class="tp-service-icon mb-70 el-icon">
@@ -524,19 +527,47 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 				<?php endif; ?>
 
 			</div>
-               
-            
+		
+			
 
+		<?php elseif($settings['service_style'] == 'style_03') : ?> 
+			
+			<!-- Service Style 03 -->
+			<div class="tp-service-3-item tp-about-mission-item d-flex align-items-center wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".3s">
+				<span class="tp-about-mission-icon mr-20 d-inline-flex justify-content-center align-items-center">
+					<?php if($settings['icon_style'] == 'icon') : ?>
+							<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+						<?php elseif($settings['icon_style'] == 'image') : ?>
+							<img src="<?php echo esc_url($settings['image']['url']); ?>" alt="">	
+						<?php else : ?>
+							<?php echo $settings['svg']; ?>	
+					<?php endif; ?>	
+				</span>
+				
+				<div>
+					<?php if(!empty($settings['title'])) : ?>
+						<h3 class="tp-about-mission-title fw-700 mb-5">
+							<?php echo mc_kses($settings['title']); ?>
+						</h3>
+					<?php endif; ?>
+
+					<?php if(!empty($settings['title'])) : ?>
+						<p class="tp-about-mission-dec fw-500 mb-0">
+							<?php echo mc_kses($settings['content']); ?>
+						</p>
+					<?php endif; ?>	
+				</div>
+			</div>    
 
 
 		<?php else: ?>
 
 
-
-			<!-- ============== service Section Design (HTML MarkUp) =============== -->
+			<!-- Service Style 01 -->
 			<div class="tp-service-item mb-30 wow fadeInUp el-icon-box" data-wow-duration=".9s" data-wow-delay=".3s">
 
 				<span class="tp-service-icon mb-25 el-icon">
+
 					<!-- Multiple Icone print condition -->
 					<?php if($settings['icon_style'] == 'icon') :?>
 						<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
@@ -577,10 +608,7 @@ class Mindu_Icon_Box extends \Elementor\Widget_Base {
 						</span>
 					</a>
 				<?php endif; ?>
-				
-				
-
-				
+					
 				
 			</div>
 

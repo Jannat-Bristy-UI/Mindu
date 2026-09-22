@@ -62,7 +62,10 @@ function register_mindu_widget( $widgets_manager ) {
 	require_once( __DIR__ . '/widgets/button.php' );
 	require_once( __DIR__ . '/widgets/team.php' );
 	require_once( __DIR__ . '/widgets/team-slider.php' );
+	require_once( __DIR__ . '/widgets/text-slide.php' );
+	require_once( __DIR__ . '/widgets/storie-list.php' );
 	require_once( __DIR__ . '/widgets/testimonial.php' );
+	require_once( __DIR__ . '/widgets/fact.php' );
 	require_once( __DIR__ . '/widgets/faq.php' );
 	require_once( __DIR__ . '/widgets/video.php' );
 	require_once( __DIR__ . '/widgets/icon.php' );

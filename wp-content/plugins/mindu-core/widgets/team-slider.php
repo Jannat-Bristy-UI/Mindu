@@ -13,7 +13,7 @@ class Mindu_Team_Slider extends \Elementor\Widget_Base {
 	}
 
 	public function get_icon(): string {
-		return 'eicon-slides';
+		return 'eicon-slider-push';
 	}
 
 	public function get_categories(): array {
@@ -145,78 +145,13 @@ class Mindu_Team_Slider extends \Elementor\Widget_Base {
 			$repeater->end_controls_tab();
 
 			// Social Tab
-			$repeater->start_controls_tab(
-				'style_hover_tab',
-				[
-					'label' => esc_html__( 'Social', 'text-domain' ),
-				]
-			);
-
-			$repeater->add_control(
-				'video_url',
-				[
-					'label'       => esc_html__( 'Video URL', 'text-domain' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'placeholder' => esc_html__( 'https://www.youtube.com/watch?v=5UY8Ne9IpaM', 'text-domain' ),
-					'default' => 'https://www.youtube.com/watch?v=5UY8Ne9IpaM',
-					'label_block' => true,
-					'condition' => [
-						'social_layout' => 'style_2',
-					],
-				]
-			);
-
-			$repeater->add_control(
-				'facebook_url',
-				[
-					'label'       => esc_html__( 'Facebook URL', 'text-domain' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'placeholder' => esc_html__( 'https://facebook.com/username', 'text-domain' ),
-					'label_block' => true,
-					'condition' => [
-						'social_layout' => 'style_1',
-					],
-				]
-			);
-
-			$repeater->add_control(
-				'dribbble_url',
-				[
-					'label'       => esc_html__( 'Dribbble URL', 'text-domain' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'placeholder' => esc_html__( 'https://dribbble.com/username', 'text-domain' ),
-					'label_block' => true,
-					'condition' => [
-						'social_layout' => 'style_1',
-					],
-				]
-			);
-
-			$repeater->add_control(
-				'x_url',
-				[
-					'label'       => esc_html__( 'X URL', 'text-domain' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'placeholder' => esc_html__( 'https://x.com/username', 'text-domain' ),
-					'label_block' => true,
-					'condition' => [
-						'social_layout' => 'style_1',
-					],
-				]
-			);
-
-			$repeater->add_control(
-				'instagram_url',
-				[
-					'label'       => esc_html__( 'Instagram URL', 'text-domain' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'placeholder' => esc_html__( 'https://instagram.com/username', 'text-domain' ),
-					'label_block' => true,
-					'condition' => [
-						'social_layout' => 'style_1',
-					],
-				]
-			);
+		// Social Tab
+		$repeater->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => esc_html__( 'Social', 'text-domain' ),
+			]
+		);
 
 			$repeater->end_controls_tab();
 
@@ -289,10 +224,11 @@ class Mindu_Team_Slider extends \Elementor\Widget_Base {
 								<div class="swiper-slide">
 									<div class="tp-team-3-item p-relative">
 										<?php if(!empty($item['image']['url'])) : ?>
-										<div class="tp-team-3-thumb">
-											<img class="w-100" src="<?php echo esc_html($item['image']['url']); ?>" alt="">
-										</div>
+											<div class="tp-team-3-thumb">
+												<img class="w-100" src="<?php echo esc_html($item['image']['url']); ?>" alt="">
+											</div>
 										<?php endif; ?>
+
 										<div class="tp-team-3-content p-absolute d-flex align-items-center justify-content-between">
 
 											<!-- Profile Name & Designation -->
@@ -328,6 +264,11 @@ class Mindu_Team_Slider extends \Elementor\Widget_Base {
 					</div>
 				</div>
 			</div>
+
+
+
+
+			
 		<?php else : ?>
 
 			<div class="tp-team-area p-relative z-1 fix">

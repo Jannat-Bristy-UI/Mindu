@@ -147,3 +147,47 @@ ul.el-icon-list li.el-icon-list-item {
 .el-icon-list-item .el-icon svg * {
     transition: color 0.3s ease, fill 0.3s ease, stroke 0.3s ease !important;
 }
+
+
+
+
+/* Style 1: 540x530 */
+.elementor-widget-mindu-testimonial .tp-testimonial-thumb {
+    width: 100%;
+    max-width: 540px;
+    height: 530px;
+    overflow: hidden;
+}
+.elementor-widget-mindu-testimonial .tp-testimonial-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Style 2: 60x60 */
+.elementor-widget-mindu-testimonial .tp-testimonial-2-avatar img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Style 3: Image 266x412 & Logo 188x45 */
+.elementor-widget-mindu-testimonial .tp-testimonial-3-thumb {
+    width: 100%;
+    max-width: 266px;
+    height: 412px;
+    overflow: hidden;
+}
+.elementor-widget-mindu-testimonial .tp-testimonial-3-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.elementor-widget-mindu-testimonial .tp-testimonial-3-content .testimonial-logo {
+    width: 188px;
+    height: 45px;
+    object-fit: contain;
+}

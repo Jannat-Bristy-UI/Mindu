@@ -334,102 +334,34 @@ class Mindu_Icon_List extends \Elementor\Widget_Base {
         // End Text Style Controls
 
 
-        // Divider Controls Section
+// Border / Stroke Controls Section
         $this->start_controls_section(
-            'section_divider_style',
+            'section_item_border',
             [
-                'label' => esc_html__( 'Divider', 'elementor-addon' ),
+                'label' => esc_html__( 'Item Border', 'elementor-addon' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
-        $this->add_control(
-            'show_divider',
+        // Group Control Border
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
             [
-                'label'        => esc_html__( 'Divider', 'elementor-addon' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Show', 'elementor-addon' ),
-                'label_off'    => esc_html__( 'Hide', 'elementor-addon' ),
-                'return_value' => 'yes',
-                'default'      => '',
-                
+                'name'     => 'item_border',
+                'label'    => esc_html__( 'Border', 'elementor-addon' ),
+                'selector' => '{{WRAPPER}} .el-icon-list-item',
             ]
         );
 
-        $this->add_control(
-            'divider_style',
-            [
-                'label'     => esc_html__( 'Style', 'elementor-addon' ),
-                'type'      => \Elementor\Controls_Manager::SELECT,
-                'options'   => [
-                    'solid'  => esc_html__( 'Solid', 'elementor-addon' ),
-                    'double' => esc_html__( 'Double', 'elementor-addon' ),
-                    'dotted' => esc_html__( 'Dotted', 'elementor-addon' ),
-                    'dashed' => esc_html__( 'Dashed', 'elementor-addon' ),
-                ],
-                'default'   => 'solid',
-                'condition' => [
-                    'show_divider' => 'yes',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-icon-list-item:not(:last-child)' => 'border-bottom-style: {{VALUE}};',
-                ],
-
-                
-            ]
-        );
-
-        $this->add_control(
-            'divider_weight',
-            [
-                'label'      => esc_html__( 'Weight', 'elementor-addon' ),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range'      => [
-                    'px' => [ 'min' => 1, 'max' => 20 ],
-                ],
-                'default'    => [
-                    'size' => 1,
-                    'unit' => 'px',
-                ],
-                'condition'  => [
-                    'show_divider' => 'yes',
-                ],
-                'selectors'  => [
-                    '{{WRAPPER}} .el-icon-list-item:not(:last-child)' => 'border-bottom-width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'divider_color',
-            [
-                'label'     => esc_html__( 'Color', 'elementor-addon' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#e6e6e6',
-                'condition' => [
-                    'show_divider' => 'yes',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-icon-list-item:not(:last-child)' => 'border-bottom-color: {{VALUE}};',
-                ],
-            ]
-        );
-
+        // Full Padding Control
         $this->add_responsive_control(
-            'divider_padding',
+            'item_padding',
             [
-                'label'      => esc_html__( 'Padding Bottom', 'elementor-addon' ),
-                'type'       => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px', 'em', 'rem' ],
-                'range'      => [
-                    'px' => [ 'min' => 0, 'max' => 100 ],
-                ],
-                'condition'  => [
-                    'show_divider' => 'yes',
-                ],
+                'label'      => esc_html__( 'Item Padding', 'elementor-addon' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .el-icon-list-item:not(:last-child)' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .el-icon-list-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
